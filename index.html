@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Festín del Hambre Eterna</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes Google -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        body {
+            font-family: 'Lora', serif;
+        }
+        
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Scrollbar Personalizado */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(60, 30, 10, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(60, 30, 10, 0.3);
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(60, 30, 10, 0.5);
+        }
+
+        /* Lógica de Paisaje (Landscape) */
+        #landscape-warning {
+            display: none;
+        }
+        @media only screen and (max-width: 900px) and (orientation: landscape) {
+            #landscape-warning {
+                display: flex !important;
+            }
+            #app-content {
+                display: none !important;
+            }
+        }
+
+        /* Animaciones */
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="bg-[#1a1410] text-amber-950 antialiased overflow-hidden w-full h-screen flex items-center justify-center p-0 md:p-8">
+
+    <!-- Advertencia de Paisaje -->
+    <div id="landscape-warning" class="fixed inset-0 z-50 bg-[#1a1410] flex flex-col items-center justify-center p-8 text-center text-[#fdfbf7]">
+        <div class="mb-6 text-amber-600 animate-pulse">
+            <!-- Icono Smartphone Rotado -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform rotate-90"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <h2 class="text-3xl font-playfair text-amber-500 mb-4 tracking-widest">
+            El Grimorio Exige Respeto
+        </h2>
+        <p class="italic text-amber-200/60 max-w-md">
+            Para consultar los secretos del bosque, debes enderezar tu camino.
+        </p>
+        <p class="mt-4 text-sm font-bold uppercase tracking-widest text-amber-700">
+            (Gira tu dispositivo a vertical)
+        </p>
+    </div>
+
+    <!-- Contenedor Principal del Libro -->
+    <div id="app-content" class="w-full md:max-w-5xl h-full md:h-[90vh] bg-[#fdfbf7] md:rounded-sm shadow-2xl overflow-hidden relative border-none md:border-r-8 md:border-r-[#d6c4b0] md:border-l-4 md:border-l-[#2c241b]">
+        
+        <!-- Sombra Decorativa (Solo Desktop) -->
+        <div class="hidden md:block absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-black/30 to-transparent z-20 pointer-events-none"></div>
+
+        <!-- Área de Contenido Dinámico -->
+        <div id="main-view" class="h-full relative">
+            <!-- El contenido se inyectará aquí mediante JS -->
+        </div>
+    </div>
+
+    <script>
+        // --- DATOS ---
+        const categories = [
+            { id: 'elixires', title: "Elixires y Pociones", description: "Bebidas y jarabes para el alma" },
+            { id: 'masas', title: "Masas Ancestrales", description: "Panes y fermentos del bosque" },
+            { id: 'delicias', title: "Delicias Prohibidas", description: "Dulces para tentar al espíritu" },
+            { id: 'sustento', title: "Sustento Vital", description: "Platos fuertes para la cacería" },
+            { id: 'conservas', title: "Conservas del Tiempo", description: "Sabores atrapados en cristal" }
+        ];
+
+        const initialRecipes = [
+            // ... (Todas las recetas del paso anterior) ...
+            {
+                id: 1,
+                category: 'elixires',
+                title: "Sirope de Caramelo: Oro Líquido",
+                yield: "1 taza",
+                time: "15 min",
+                ingredients: ["200 g (1 taza) de azúcar blanca", "120 ml (1/2 taza) de crema de leche", "30 g (2 cdas) de mantequilla", "120 ml (1/2 taza) de leche (cantidad necesaria)", "1 pizca de sal"],
+                instructions: ["1. El Caramelo: Verter el azúcar en una olla seca a fuego medio. Dejar fundir sin remover excesivamente hasta obtener un color ámbar dorado.", "2. Materia Grasa: Incorporar la mantequilla con cuidado y mezclar vigorosamente hasta integrar.", "3. Templado: Verter la crema de leche poco a poco mientras se revuelve (la mezcla burbujeará con fuerza).", "4. Aligerar: Agregar la leche líquida gradualmente hasta conseguir la textura deseada.", "5. Finalizar: Añadir la sal, retirar del fuego y dejar enfriar antes de almacenar."],
+                note: "Ideal para bañar postres o endulzar el café. Se conserva refrigerado por varias semanas."
+            },
+            {
+                id: 2,
+                category: 'elixires',
+                title: "Bailey's: Elixir del Crepúsculo",
+                yield: "1 litro aprox.",
+                time: "20 min",
+                ingredients: ["400 g (1 lata) de leche condensada", "200 ml (3/4 taza) de leche entera", "200 g (3/4 taza) de crema de leche", "100 ml (1/3 taza) de café espresso fuerte", "5 ml (1 cdta) de esencia de vainilla", "7 g (1 cda) de cacao en polvo", "200 ml (aprox. 3/4 taza) de whiskey"],
+                instructions: ["1. La Base Oscura: Preparar el café espresso y dejarlo enfriar completamente (vital para no cortar los lácteos).", "2. La Trinidad Láctea: Combinar en un bol o licuadora la leche condensada, la leche entera y la crema de leche.", "3. Aromatizar: Añadir la vainilla y el cacao en polvo. Batir enérgicamente para disolver los grumos.", "4. Fusión: Verter el café frío a la mezcla y remover hasta unificar el color.", "5. El Espíritu: Agregar el whiskey al final y mezclar suavemente. Reposar para bajar la espuma antes de embotellar."],
+                note: "Mejora con el tiempo. Dejar madurar en frío 2 días. Agitar siempre antes de servir."
+            },
+            {
+                id: 3,
+                category: 'elixires',
+                title: "Sirope de Nutella: Sangre de Avellana",
+                yield: "400 ml",
+                time: "15 min",
+                ingredients: ["150 g (1/2 taza) de crema de avellanas (Nutella)", "20 g (2.5 cdas) de cacao en polvo (opcional)", "80 ml (1/3 taza) de leche entera", "80 ml (1/3 taza) de crema de leche", "30 g (2 cdas) de azúcar blanca", "1 pizca de sal", "5 ml (1 cdta) de esencia de vainilla"],
+                instructions: ["1. Calentar: Disolver el azúcar en la leche y la crema de leche en una olla a fuego bajo.", "2. Fundir: Agregar la crema de avellanas y remover hasta integrar completamente.", "3. Intensificar: Añadir el cacao en polvo tamizado si se desea un sabor más profundo.", "4. Espesar: Cocinar a fuego lento durante 5-7 minutos sin dejar de mover hasta lograr consistencia de jarabe.", "5. Acabado: Retirar del fuego, añadir sal y vainilla. Enfriar antes de envasar."],
+                note: "Perfecto para cafés helados o topping. Vida útil de 2 semanas en refrigeración."
+            },
+            {
+                id: 7,
+                category: 'masas',
+                title: "Rollos de Canela: Espirales del Bosque",
+                yield: "12 rollos",
+                time: "3 h 30 min",
+                ingredients: ["--- MASA ---", "250 ml (1 taza) de leche tibia (35°C)", "50 g (1/4 taza) de azúcar blanca", "8 g (2.5 cdtas) de levadura seca", "100 g (7 cdas) de mantequilla fundida", "2 huevos grandes", "550 g (4 1/2 tazas) de harina de fuerza", "5 g (1 cdta) de sal", "100 ml (1/3 taza) de nata líquida (para baño)", "--- RELLENO ---", "120 g (1/2 taza) de mantequilla pomada", "120 g (1/2 taza) de azúcar morena", "10 g (1.5 cdas) de canela en polvo", "--- GLASEADO ---", "40 g (3 cdas) de mantequilla", "100 g (1/2 taza) de queso crema", "40 g (1/3 taza) de azúcar glas"],
+                instructions: ["1. Activar: Mezclar la leche tibia con una cucharada de azúcar y la levadura. Reposar 10 min hasta espumar.", "2. Mezclar: En un bol, unir el resto del azúcar, mantequilla fundida, huevos y el fermento. Añadir harina y sal gradualmente.", "3. Amasar: Trabajar la masa 15-20 minutos hasta que sea lisa y elástica. Fermentar 2 horas en lugar cálido.", "4. Formar: Estirar la masa en rectángulo (60x40 cm). Untar mantequilla pomada y cubrir con azúcar y canela.", "5. Cortar: Enrollar con cuidado y cortar 12 piezas (usar hilo dental para cortes limpios).", "6. Leudado Final: Colocar en bandeja profunda con separación. Reposar 45 minutos tapado.", "7. El Secreto: Verter la nata líquida tibia sobre los huecos entre los rollos justo antes de hornear.", "8. Hornear: Cocinar a 180°C por 20-25 minutos hasta dorar.", "9. Glasear: Batir los ingredientes del glaseado y cubrir los rollos aún calientes."],
+                note: "El baño de nata es el secreto para una suavidad extrema."
+            },
+            {
+                id: 10,
+                category: 'masas',
+                title: "Focaccia Manzana y Canela: Ofrenda de Otoño",
+                yield: "1 molde (23x33 cm)",
+                time: "5 h 00 min",
+                ingredients: ["--- MASA ---", "500 g (4 tazas) de harina de fuerza", "420 ml (1 3/4 tazas) de agua tibia", "6 g (1.5 cdtas) de levadura seca", "15 ml (1 cda) de aceite de oliva", "10 g (2 cdtas) de sal fina", "5 g (2 cdtas) de canela en polvo", "5 g (1 cdta) de miel", "--- RELLENO ---", "450 g (aprox. 4) manzanas peladas y en cubos", "30 g (2 cdas) de mantequilla", "60 g (1/4 taza) de azúcar morena", "4 g (1.5 cdtas) de canela en polvo", "Espesante: 5 g maicena + 10 ml agua", "--- COBERTURA ---", "60 g (4 cdas) de mantequilla fundida", "85 g (1/3 taza) de azúcar morena", "--- GLASEADO ---", "90 g (3/4 taza) de azúcar glas", "30 ml (2 cdas) de leche"],
+                instructions: ["1. Activar: Mezclar agua, levadura y miel. Esperar 5 minutos hasta ver espuma.", "2. Integrar: Añadir aceite, harina, sal y canela. Mezclar hasta que no quede harina seca (sin amasar mucho). Reposar 15 min.", "3. Pliegues: Estirar un borde de la masa y doblarlo al centro. Girar y repetir 4 veces. Reposar 15 min. Repetir el ciclo 3 veces.", "4. Fermentación: Tapar y dejar crecer 1 h 30 min hasta duplicar tamaño.", "5. Relleno: Cocinar manzanas con mantequilla, azúcar y canela 8 min. Añadir maicena diluida, espesar y enfriar.", "6. Montaje: Colocar masa en molde engrasado. Cubrir con MITAD de cobertura y MITAD de manzanas.", "7. El Sobre: Doblar la masa en tríptico (encerrando el relleno). Voltear (costura abajo) y estirar para cubrir el molde. Fermentar 1 h 30 min.", "8. Dimpling: Verter el resto de cobertura y manzanas. Hundir los dedos para crear hoyuelos.", "9. Hornear: Cocinar a 220°C por 25 minutos. Decorar con glaseado al enfriar un poco."],
+                note: "Pan dulce húmedo estilo postre. Consumir el mismo día."
+            },
+            {
+                id: 11,
+                category: 'masas',
+                title: "Tarta de Zanahoria: Raíces de la Tierra",
+                yield: "8-10 porciones",
+                time: "2 h 45 min",
+                ingredients: ["--- ZANAHORIA CARAMELIZADA ---", "500 g (aprox. 5) zanahorias ralladas finas", "120 g (1 taza) de nueces troceadas", "120 g (1/2 taza) de mantequilla", "70 g (1/3 taza) de azúcar morena", "Ralladura de 1 naranja", "5 g (1 cdta) de canela en polvo", "5 g (1 cdta) de jengibre en polvo", "--- BIZCOCHO ---", "4 huevos grandes", "100 g (1/2 taza) de azúcar blanca", "140 ml (2/3 taza) de aceite de girasol", "60 ml (1/4 taza) de jugo de naranja", "5 ml (1 cdta) de esencia de vainilla", "230 g (1 3/4 tazas) de harina de trigo", "15 g (1 sobre) de polvos de hornear", "1 pizca de sal", "--- FROSTING ---", "300 g (1 1/4 tazas) de queso crema frío", "150 g (2/3 taza) de mantequilla pomada", "150 g (1 1/4 tazas) de azúcar glas", "--- CARAMELO SALADO ---", "150 g (3/4 taza) de azúcar blanca", "150 ml (2/3 taza) de nata para montar caliente", "50 g (3.5 cdas) de mantequilla", "3 g (1/2 cdta) de sal"],
+                instructions: ["1. La Raíz de Oro: Derretir mantequilla con azúcar morena. Añadir especias, ralladura, zanahoria y nueces. Cocinar 7 min (reducir líquido) y enfriar.", "2. La Emulsión Vital: Blanquear huevos con azúcar blanca hasta espumar. Añadir aceite en hilo, jugo y vainilla. Integrar la mezcla de zanahoria fría.", "3. La Lluvia Seca: Tamizar harina, polvos de hornear y sal. Incorporar con movimientos envolventes en dos tandas.", "4. El Nacimiento: Verter en molde de 20 cm engrasado. Hornear a 170°C por 45-50 min. Enfriar en rejilla.", "5. La Nieve Cremosa: Batir mantequilla con azúcar glas hasta cremar. Añadir queso crema y batir justo hasta integrar. Refrigerar 30 min.", "6. El Ámbar Líquido: Fundir azúcar a fuego bajo hasta color ámbar. Añadir nata caliente con precaución. Integrar, añadir mantequilla y sal. Enfriar.", "7. La Torre Dulce: Cortar el bizcocho en dos capas. Rellenar con frosting y un hilo de caramelo. Cubrir exterior con frosting.", "8. El Baño de Oro: Verter el resto del caramelo salado sobre la tarta antes de servir."],
+                note: "La zanahoria caramelizada aporta una humedad y profundidad de sabor inigualables."
+            },
+            // --- DELICIAS ---
+            {
+                id: 12,
+                category: 'delicias',
+                title: "Brownies: Fragmentos de Noche",
+                yield: "9 porciones",
+                time: "45 min",
+                ingredients: ["100 g de chocolate semi amargo", "170 g de mantequilla de vaca (o margarina complementada)", "100 g de azúcar blanca (si usas chocolate normal: reducir a 70g)", "100 g de azúcar morena (si usas chocolate normal: reducir a 70g)", "3 huevos grandes", "Esencia de vainilla al gusto", "90 g de harina blanca (o 100g si usas cocoa en lugar de cacao)", "40 g de cacao en polvo sin azúcar (o 30g de cocoa)", "5 ml (1 cdta) de café espresso o instantáneo"],
+                cookingTable: [
+                    { point: "Fudgy", desc: "Chocolate intenso, húmedo, casi crudo.", temp: "175–180 °C", time: "22–25 min" },
+                    { point: "Chewy", desc: "Firme pero flexible, bordes chiclosos.", temp: "175–180 °C", time: "25–28 min" },
+                    { point: "Cakey", desc: "Esponjoso, textura tipo torta.", temp: "175–180 °C", time: "28–32 min" }
+                ],
+                instructions: ["1. El Oro Avellana: Calentar la mantequilla hasta que tome un color dorado y desprenda olor a nuez (noisette). Si usas margarina, mezcla con un poco de leche en polvo para imitar el efecto.", "2. La Fusión Oscura: Agregar el chocolate picado a la mantequilla caliente y derretir lentamente fuera del fuego. Añadir el café y dejar templar.", "3. El Baño de Calor: En un bol, calentar levemente los huevos con ambos azúcares (baño maría suave o microondas) para ayudar a disolver los cristales. No batir en exceso para no incorporar aire.", "4. La Unión de Fuerzas: Mezclar la harina con el cacao (o cocoa) en un recipiente aparte.", "5. El Pacto Final: Incorporar la mezcla de chocolate y mantequilla a los huevos con azúcar. Después, integrar los secos tamizados con movimientos suaves (no mezclar mucho para evitar aire).", "6. El Lecho Profundo: Verter en un molde preparado, llenando unos 4-5 cm de altura. Esparcir parejo.", "7. La Prueba de Fuego: Hornear según el punto deseado (consultar la Tabla de Cocción abajo).", "8. La Ofrenda: A mitad de cocción, agregar toppings como sal rosada, pistachos o nueces.", "9. La Paciencia: Esperar 20-30 minutos antes de cortar para que la estructura se asiente."],
+                note: "El secreto está en la temperatura de la mantequilla y en no sobrebatir la mezcla final."
+            },
+            {
+                id: 14,
+                category: 'delicias',
+                title: "Mousse de Maracuyá: Nubes de Oro",
+                yield: "8 porciones",
+                time: "30 min + 4 h frío",
+                ingredients: ["500 ml (2 tazas) de crema de leche (fría)", "4 claras de huevo", "100 g (1/2 taza) de azúcar blanca", "2 tazas de pulpa de maracuyá (para la mezcla)", "21 g (3 sobres) de gelatina sin sabor", "120 ml (1/2 taza) de agua fría (para hidratar)", "Cacao en polvo o almíbar de maracuyá (para decorar)"],
+                instructions: ["1. La Nube Fría: Batir la crema de leche fría hasta obtener un punto Chantilly (picos suaves). No batir en exceso para evitar que se corte. Reservar en frío.", "2. El Suspiro Etéreo: Batir las claras a punto de nieve. Incorporar el azúcar en forma de lluvia poco a poco hasta obtener un merengue firme y brillante.", "3. El Corazón de la Fruta: Hidratar la gelatina en agua fría y fundir en microondas (30 seg). Mezclar las 2 tazas de pulpa de maracuyá con la gelatina líquida.", "4. La Unión: Verter la mezcla de fruta sobre el merengue batiendo suavemente. Luego, incorporar la crema batida con movimientos envolventes para no perder aire.", "5. El Reposo: Verter en moldes y refrigerar hasta cuajar (mínimo 4 horas).", "6. El Toque Final: Decorar la superficie con una lluvia de cacao en polvo o hilos de almíbar de maracuyá antes de servir."],
+                note: "Esta receta es una base maestra. Puedes sustituir el maracuyá por otras frutas ácidas. Mantener siempre en frío."
+            },
+            {
+                id: 15,
+                category: 'delicias',
+                title: "Pudin de Chocolate: El Lodo Celestial",
+                yield: "4-6 porciones",
+                time: "40 min + 4 h frío",
+                ingredients: [
+                    "200 g (2 tazas) de avena en hojuelas cruda",
+                    "1.25 L (5 tazas) de agua",
+                    "30 g (2 cdas) de mantequilla (o margarina)",
+                    "Especias: Canela en rama, nuez moscada, cardamomo",
+                    "45 g (6 cdas) de cocoa en polvo",
+                    "60 ml (1/4 taza) de café espresso cargado",
+                    "30 g (2 cdas) de azúcar morena",
+                    "30 g (2 cdas) de panela o piloncillo rallado",
+                    "5 ml (1 cdta) de esencia de vainilla",
+                    "1 pizca de sal",
+                    "--- TOPPING ---",
+                    "Frutos rojos (fresas, frambuesas)",
+                    "Frutos secos picados (nueces, almendras)",
+                    "Coco rallado o nibs de cacao"
+                ],
+                instructions: [
+                    "1. La Infusión Grasa: Dorar la mantequilla con las especias hasta que huela a nuez (Beurre Noisette). Verter las 5 tazas de agua, hervir 1 minuto y apagar.",
+                    "2. La Leche de Tierra: Retirar las ramas de canela y licuar el agua infusionada con la avena cruda hasta obtener una mezcla blanca.",
+                    "3. El Filtrado: Cernir la mezcla para separar el líquido del bagazo. Regresar una cucharada de este bagazo al líquido (para textura).",
+                    "4. La Sombra: Incorporar los azúcares, la cocoa, el café espresso y la sal al líquido de avena.",
+                    "5. El Espesamiento: Cocinar a fuego medio-bajo removiendo constantemente hasta que la mezcla espese y cubra el reverso de la cuchara.",
+                    "6. El Frío: Añadir vainilla, verter en moldes y refrigerar hasta que cuaje por completo.",
+                    "7. La Coronación: Decorar la superficie con frutos rojos, nueces o el topping elegido para contrastar texturas."
+                ],
+                note: "Un postre humilde que se transforma en manjar. La avena aporta una cremosidad ancestral sin necesidad de lácteos."
+            },
+            {
+                id: 16,
+                category: 'delicias',
+                title: "Cheesecake Noir & Or: Pasión y Sombra",
+                yield: "8-10 porciones",
+                time: "1 h 30 min + 7 h reposo",
+                ingredients: [
+                    "--- EL JARABE ÁUREO ---",
+                    "200 g (1 taza) de pulpa de maracuyá",
+                    "100 g (1/2 taza) de azúcar blanca",
+                    "--- LA BASE OSCURA ---",
+                    "200 g (1 paquete) de galletas de chocolate",
+                    "80 g (5 cdas) de mantequilla sin sal derretida",
+                    "--- EL RELLENO ---",
+                    "400 g (2 tazas) de queso crema a temp. ambiente",
+                    "120 g (1/2 taza) de azúcar blanca",
+                    "250 g (1 taza) de yogur natural (sin filtrar)",
+                    "150 ml (2/3 taza) de crema de leche",
+                    "3 huevos grandes",
+                    "45 g (3 cdas) de harina de trigo",
+                    "5 ml (1 cdta) de esencia de vainilla"
+                ],
+                instructions: [
+                    "1. El Néctar Dorado: En una olla, cocinar la pulpa y el azúcar del jarabe a fuego medio hasta reducir a consistencia de miel. Enfriar totalmente.",
+                    "2. El Cimiento Negro: Triturar las galletas a polvo fino. Mezclar con mantequilla derretida hasta parecer arena húmeda. Compactar en el fondo de un molde fijo de 22cm. Hornear 10 min a 170°C y enfriar.",
+                    "3. La Crema Alquímica: Batir el queso crema con el azúcar hasta que no haya grumos (sin aire). Añadir huevos uno a uno, luego yogur, crema y vainilla. Al final, tamizar la harina e integrar suavemente.",
+                    "4. La Fusión de Sabor: Separar 3 cucharadas grandes del jarabe de maracuyá frío y mezclarlas dentro de la crema de queso.",
+                    "5. El Arte del Caos: Verter el relleno sobre la base. Dejar caer gotas del resto del jarabe sobre la superficie. Con un palillo, dibujar espirales para marmolar.",
+                    "6. El Fuego Lento: Bajar horno a 150°C. Colocar una taza de agua en una esquina del horno (humedad). Hornear 55-65 min. El centro debe temblar ligeramente.",
+                    "7. El Sueño Frío: Apagar horno, abrir un poco la puerta y dejar enfriar dentro 1 hora. Luego refrigerar mínimo 6 horas."
+                ],
+                note: "La harina ayuda a estabilizar la mezcla y evitar grietas sin alterar el sabor. El enfriado lento dentro del horno apagado es el verdadero secreto para una textura sedosa."
+            },
+            {
+                id: 4,
+                category: 'delicias',
+                title: "Biscotelas: Dedos de Hueso",
+                yield: "24 piezas",
+                time: "30 min",
+                ingredients: ["5 claras de huevo (aprox. 160 g)", "5 yemas de huevo (aprox. 90 g)", "180 g (1 1/2 tazas) de harina de trigo", "170 g (3/4 taza) de azúcar blanca", "5 ml (1 cdta) de esencia de vainilla", "100 g (1/2 taza) de azúcar blanca (para cubrir)"],
+                instructions: ["1. Nubes de Azúcar: Batir claras a punto de nieve agregando azúcar en forma de lluvia hasta obtener picos firmes y brillantes.", "2. El Oro Líquido: Batir ligeramente las yemas con la vainilla en otro recipiente.", "3. El Abrazo Etéreo: Verter yemas sobre el merengue e integrar con movimientos envolventes muy suaves.", "4. La Lluvia de Trigo: Tamizar la harina sobre la mezcla en dos partes. Integrar envolviendo con cuidado para no bajar el aire.", "5. Los Bastones de Hueso: Usar manga pastelera con boquilla redonda. Formar bastones de 8-10 cm sobre papel de horno.", "6. El Velo Cristalino: Espolvorear generosamente con azúcar blanca antes de hornear.", "7. El Fuego Suave: Cocinar a 180°C por 15 minutos hasta dorar levemente."],
+                note: "La clave es la suavidad al mezclar la harina para mantener la esponjosidad."
+            },
+            {
+                id: 5,
+                category: 'delicias',
+                title: "Tiramisú: Estratos del Olvido",
+                yield: "4 porciones",
+                time: "20 min + 3 h frío",
+                ingredients: ["180 g (3/4 taza) de yogur natural o griego", "120 ml (1/2 taza) de crema de leche fría", "15 Biscotelas caseras (aprox. 100 g)", "80 ml (1/3 taza) de café espresso fuerte", "40 g (3 cdas) de azúcar o miel", "5 ml (1 cdta) de esencia de vainilla", "15 g (2 cdas) de cacao en polvo"],
+                instructions: ["1. El Batido Blanco: Batir crema de leche fría con azúcar hasta medio punto (cuerpo suave).", "2. La Fusión Griega: Incorporar el yogur y vainilla a la crema con movimientos suaves.", "3. La Esencia Negra: Disponer el espresso frío en un plato hondo.", "4. El Bautismo: Mojar rápidamente las biscotelas en café (vuelta y vuelta) y colocar base en vasos.", "5. La Construcción: Cubrir con crema. Repetir alternando galleta y crema hasta llenar.", "6. El Sueño Frío: Refrigerar tapado mínimo 3 horas.", "7. El Polvo de Noche: Espolvorear cacao en polvo justo antes de servir."],
+                note: "Versión más ligera y fresca. El reposo es vital para la textura."
+            },
+            {
+                id: 8,
+                category: 'delicias',
+                title: "Turrón de Almendra: Losa Ancestral",
+                yield: "1 tableta",
+                time: "40 min + 12 h reposo",
+                isUntested: true,
+                ingredients: ["200 g (1 1/2 tazas) de almendras crudas", "120 g (1/3 taza) de miel de abeja", "60 g (1/4 taza) de azúcar blanca", "1 clara de huevo (aprox. 30 g)", "2 hojas de oblea o papel de arroz"],
+                instructions: ["1. El Tostado Sagrado: Escaldar y pelar almendras si es necesario. Tostar en horno a 170°C por 15 min hasta dorar el interior.", "2. El Oro Hirviente: Calentar miel y azúcar a fuego medio-bajo hasta 135°C (punto de bola dura).", "3. La Espuma Blanca: Batir la clara a punto de nieve firme mientras se hace el almíbar.", "4. El Hilo de Vida: Verter el almíbar en hilo sobre la clara batiendo constantemente (mezcla brillante).", "5. La Deshidratación: Cocinar la mezcla a fuego MUY bajo removiendo hasta que espese mucho y se despegue.", "6. La Unión Pétrea: Añadir almendras tostadas y mezclar con fuerza.", "7. El Prensado: Verter sobre una oblea en molde, cubrir con la otra oblea y colocar peso encima.", "8. La Petrificación: Dejar enfriar 12 horas antes de cortar."],
+                note: "El secado al fuego es crucial para la textura dura y crujiente."
+            },
+            {
+                id: 9,
+                category: 'sustento',
+                title: "Macarrones: El Caldero Dorado",
+                yield: "3 porciones",
+                time: "25 min",
+                ingredients: ["200 g (2 tazas) de pasta corta (macarrones)", "50 g (3.5 cdas) de mantequilla", "50 g (1/3 taza) de harina de trigo", "500 ml (2 tazas) de leche entera", "200 g (2 tazas) de queso Cheddar rallado", "Sal y pimienta negra al gusto", "Ajo en polvo y paprika al gusto"],
+                instructions: ["1. El Hervor Inicial: Cocer macarrones en agua con sal hasta punto al dente. Escurrir.", "2. La Base Dorada: Derretir mantequilla en olla y cocinar la harina 2 minutos.", "3. La Salsa Madre: Añadir leche poco a poco batiendo constantemente. Cocinar hasta espesar.", "4. El Despertar de Sabores: Condimentar con sal, pimienta, ajo y paprika.", "5. La Fundición: Apagar fuego, añadir queso y remover hasta fundir en una salsa lisa.", "6. La Unión Final: Integrar la pasta cocida con la salsa."],
+                note: "Gratinar con extra queso al horno para un acabado superior."
+            },
+            {
+                id: 13,
+                category: 'sustento',
+                title: "Tenders de Pollo: Garras de Fuego",
+                yield: "2-3 porciones",
+                time: "1 h 30 min",
+                ingredients: ["--- POLLO ---", "500 g (2 unidades) de pechugas de pollo", "250 ml (1 taza) de caldo de pollo o vegetales (frío)", "5 g (1 cdta) de ajo en polvo", "5 g (1 cdta) de tomillo seco", "--- EMPANIZADO ---", "120 g (1 taza) de harina de trigo", "5 g (1 cdta) de semillas de mostaza (trituradas)", "2 huevos grandes", "3 g (1/2 cdta) de jengibre en polvo", "150 g (3 tazas) de cereal de maíz sin azúcar (opciones: nachos triturados o panko)", "Sal y pimienta negra al gusto", "--- SALSA MIEL PICANTE ---", "50 g (3.5 cdas) de mantequilla", "85 g (1/3 taza) de miel de abeja", "5 g (1-2 cdtas) de hojuelas de chile o ají en polvo", "15 ml (1 cda) de salsa de soya"],
+                instructions: ["1. La Marca: Pinchar la pechuga repetidamente con un tenedor para abrir caminos al sabor. Cortar en tiras largas y gruesas.", "2. El Baño de Esencias: Sumergir las tiras en el caldo mezclado con ajo y tomillo. Reposar en frío mínimo 1 hora (el alma del sabor).", "3. La Primera Capa: Mezclar la harina con sal, pimienta y semillas de mostaza. Cubrir el pollo escurrido con este polvo.", "4. El Nexo: Batir los huevos con el jengibre. Pasar las piezas enharinadas por esta mezcla.", "5. La Armadura: Cubrir con el cereal aplastado (o nachos/panko) presionando para que se adhiera.", "6. El Juicio: Freír en aceite caliente hasta dorar o usar Freidora de Aire a 180°C por 15 minutos (rociar aceite antes).", "7. El Néctar Ardiente: Fundir mantequilla en sartén. Añadir miel, chile y soya. Calentar a fuego medio hasta integrar y retirar.", "8. El Baño Final: Bañar los tenders crujientes con la salsa caliente antes de servir."],
+                note: "El cereal aporta un crujido dulce, los nachos un toque salado y el panko una textura aireada. Elige tu arma."
+            },
+            {
+                id: 6,
+                category: 'conservas',
+                title: "Mermelada: Corazón de la Fruta",
+                yield: "1 kg aprox.",
+                time: "1 h 30 min",
+                ingredients: ["750 g (3 tazas) de pulpa de fruta cocida", "375 g (1 3/4 tazas) de azúcar blanca", "375 g (1 3/4 tazas) de azúcar morena", "30 ml (2 cdas) de jugo de limón"],
+                instructions: ["1. La Pulpa Pura: Procesar la fruta hasta obtener 750g de pulpa limpia.", "2. El Caldero Dulce: Combinar pulpa, azúcares y limón en olla de fondo grueso.", "3. La Reducción: Cocinar a fuego medio-alto removiendo frecuentemente.", "4. La Purificación: Retirar espuma superficial con espumadera.", "5. El Punto Gel: Cocinar hasta 104°C (o prueba del plato frío: la gota no se escurre).", "6. El Encierro: Verter caliente en frascos esterilizados y sellar al vacío."],
+                note: "Refrigerar una vez abierto el frasco."
+            }
+        ];
+
+        // --- ICONOS SVG (Lucide & Custom) ---
+        const svgs = {
+            book: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+            plus: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>`,
+            chevronLeft: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>`,
+            clock: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+            users: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+            save: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>`,
+            x: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>`,
+            checkSquare: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
+            square: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>`,
+            utensils: `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m7 2 12 12"/><path d="M7 2v20"/><path d="M21 6V4"/><path d="m21 2-6 6"/><path d="m3 22 18-18"/></svg>`, // UtensilsCrossed approx
+            sparkles: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>`
+        };
+
+        const antlerCorner = (rot) => `
+            <svg viewBox="0 0 100 100" class="absolute w-16 h-16 md:w-32 md:h-32 text-amber-900 opacity-80 md:opacity-90 pointer-events-none" style="transform: rotate(${rot}deg); top: ${rot===180||rot===270?'auto':'0'}; bottom: ${rot===180||rot===270?'0':'auto'}; left: ${rot===0||rot===270?'0':'auto'}; right: ${rot===90||rot===180?'0':'auto'};">
+                <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M5,5 C15,15 25,25 45,35 M5,5 C15,25 15,45 20,85" />
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M25,25 C35,20 50,15 75,20 M50,18 C55,10 65,5 80,5 M60,19 C65,25 75,30 90,25" />
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15,45 C20,55 35,65 30,90 M25,60 C35,65 50,70 60,85 M18,55 C10,60 5,75 2,90" />
+                <circle cx="5" cy="5" r="2" fill="currentColor" />
+            </svg>
+        `;
+
+        const antlerDivider = `
+            <div class="flex items-center justify-center my-6 md:my-8 opacity-60 text-amber-900">
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-amber-900/40 to-transparent"></div>
+                <div class="mx-2 md:mx-4">
+                    <svg width="40" height="30" viewBox="0 0 40 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20,25 L20,15" />
+                        <path d="M20,15 C10,15 5,5 2,2" />
+                        <path d="M20,15 C30,15 35,5 38,2" />
+                        <path d="M10,15 C10,5 15,2 15,2" />
+                        <path d="M30,15 C30,5 25,2 25,2" />
+                    </svg>
+                </div>
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-amber-900/40 to-transparent"></div>
+            </div>
+        `;
+
+        const wendigoIcon = `
+            <div class="mb-6 md:mb-8 opacity-80 text-amber-950 inline-block">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="md:w-32 md:h-32 mx-auto">
+                    <path d="M50,35 C42,35 38,42 38,52 C38,62 45,70 50,75 C55,70 62,62 62,52 C62,42 58,35 50,35 Z" />
+                    <circle cx="44" cy="48" r="2.5" fill="currentColor" stroke="none" opacity="0.8"/>
+                    <circle cx="56" cy="48" r="2.5" fill="currentColor" stroke="none" opacity="0.8"/>
+                    <path d="M47,62 L53,62 M48,66 L52,66 M49,58 L51,58" stroke-width="1"/>
+                    <path d="M40,38 C30,25 15,20 5,30" />
+                    <path d="M30,28 C30,15 35,5 42,10" />
+                    <path d="M15,24 C12,15 5,10 0,15" />
+                    <path d="M60,38 C70,25 85,20 95,30" />
+                    <path d="M70,28 C70,15 65,5 58,10" />
+                    <path d="M85,24 C88,15 95,10 100,15" />
+                    <path d="M50,75 L50,100 M50,80 C35,80 25,90 20,100 M50,80 C65,80 75,90 80,100" opacity="0.6" />
+                </svg>
+            </div>
+        `;
+
+        // --- ESTADO ---
+        let appState = {
+            view: 'cover', // cover, list, details, add
+            selectedRecipeId: null,
+            recipes: initialRecipes,
+            newRecipe: { title: '', yield: '', time: '', category: 'elixires', ingredients: '', instructions: '', note: '' }
+        };
+
+        const mainContainer = document.getElementById('main-view');
+
+        // --- RENDERIZADORES ---
+
+        function renderCover() {
+            mainContainer.innerHTML = `
+                <div class="flex flex-col items-center justify-center h-full text-center p-4 md:p-8 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
+                    ${antlerCorner(0)} ${antlerCorner(90)} ${antlerCorner(180)} ${antlerCorner(270)}
+                    
+                    ${wendigoIcon}
+
+                    <h1 class="text-4xl md:text-7xl font-playfair text-amber-950 mb-4 tracking-widest leading-tight">
+                        El Festín del<br/><span class="italic text-5xl md:text-8xl text-amber-900">Hambre Eterna</span>
+                    </h1>
+                    
+                    <div class="flex flex-col gap-2 mb-12">
+                        <p class="text-amber-900/80 italic tracking-wide text-lg md:text-xl px-4">Crónicas Culinarias del Bosque Profundo</p>
+                        <p class="text-amber-900/60 text-xs md:text-sm uppercase tracking-widest mt-4 border-t border-amber-900/20 pt-3 inline-block mx-auto">Por Isaías Martínez</p>
+                    </div>
+                    
+                    <button onclick="navigate('list')" class="px-8 py-4 bg-amber-950 text-[#fdfbf7] text-xl rounded-sm shadow-lg hover:bg-amber-900 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3 border border-amber-900">
+                        ${svgs.book} Abrir Grimorio
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderList() {
+            let html = `
+                <div class="h-full flex flex-col p-4 md:p-12 relative">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
+                    ${antlerCorner(0)} ${antlerCorner(90)}
+                    
+                    <div class="z-10 text-center mb-6 mt-4">
+                        <h2 class="text-3xl md:text-4xl font-playfair text-amber-950 mb-2 border-b-2 border-amber-900/20 inline-block pb-2 px-8 uppercase tracking-widest">Índice del Bosque</h2>
+                        <p class="text-amber-800/60 italic text-sm mb-4">Total de sacrificios: ${appState.recipes.length}</p>
+                        <div class="h-px w-24 bg-amber-900/30 mx-auto"></div>
+                    </div>
+
+                    <div class="z-10 flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-8 pb-20">
+            `;
+
+            categories.forEach(cat => {
+                const catRecipes = appState.recipes.filter(r => r.category === cat.id);
+                if (catRecipes.length === 0) return;
+
+                html += `
+                    <div class="mb-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="h-px flex-1 bg-amber-900/20"></div>
+                            <div class="text-center">
+                                <h3 class="text-xl md:text-2xl font-playfair text-amber-900 font-bold uppercase tracking-wider">${cat.title}</h3>
+                                <p class="text-[10px] md:text-xs text-amber-800/60 italic">${cat.description}</p>
+                            </div>
+                            <div class="h-px flex-1 bg-amber-900/20"></div>
+                        </div>
+                        <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
+                `;
+
+                catRecipes.forEach(recipe => {
+                    html += `
+                        <div onclick="selectRecipe(${recipe.id})" class="group cursor-pointer p-4 border border-amber-900/10 hover:border-amber-900/50 rounded-sm transition-all bg-white/30 hover:bg-amber-100/30 shadow-sm relative overflow-hidden active:scale-[0.98] touch-manipulation">
+                            <div class="absolute -right-4 -bottom-4 opacity-0 group-hover:opacity-10 transition-opacity text-amber-900">
+                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50,100 C60,60 80,40 100,20" /><path d="M60,60 C70,50 90,50 100,40" /></svg>
+                            </div>
+                            <div class="flex justify-between items-baseline mb-2 relative z-10">
+                                <span class="font-playfair text-lg md:text-xl font-bold text-amber-950 group-hover:text-amber-800 flex items-center gap-2">
+                                    ${recipe.title}
+                                    ${recipe.isUntested ? `<span class="text-amber-600 animate-pulse" title="Sin probar">${svgs.sparkles}</span>` : ''}
+                                </span>
+                                <span class="text-xs text-amber-800/50 italic whitespace-nowrap ml-2">Ver</span>
+                            </div>
+                            <div class="h-px w-full bg-amber-900/10 group-hover:bg-amber-900/30 transition-colors"></div>
+                            <div class="flex gap-4 mt-2 text-xs text-amber-800/70 uppercase tracking-widest relative z-10">
+                                <span class="flex items-center gap-1">${svgs.clock} ${recipe.time}</span>
+                                <span class="flex items-center gap-1">${svgs.users} ${recipe.yield}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+            });
+
+            html += `
+                    </div>
+                    
+                    <div class="z-20 fixed bottom-6 left-0 right-0 flex justify-center pointer-events-none">
+                        <button onclick="navigate('add')" class="pointer-events-auto px-6 py-3 bg-[#fdfbf7] border-2 border-amber-900 text-amber-950 rounded-full shadow-xl hover:bg-amber-900 hover:text-white transition-all flex items-center gap-2 text-sm uppercase tracking-widest transform hover:scale-105 active:scale-95">
+                            ${svgs.plus} Nueva Receta
+                        </button>
+                    </div>
+                </div>
+            `;
+            mainContainer.innerHTML = html;
+        }
+
+        function renderDetail() {
+            const recipe = appState.recipes.find(r => r.id === appState.selectedRecipeId);
+            if (!recipe) return navigate('list');
+
+            const savedChecks = JSON.parse(localStorage.getItem(`recipe_checks_${recipe.id}`) || '{}');
+
+            let html = `
+                <div class="h-full flex flex-col p-4 md:p-12 relative bg-[#fdfbf7] overflow-y-auto custom-scrollbar">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
+                    
+                    <div class="z-10 w-full flex justify-between items-center mb-6 text-amber-900/60 sticky top-0 bg-[#fdfbf7]/90 backdrop-blur-sm p-2 rounded-b-lg border-b border-amber-900/10">
+                        <button onclick="exitRecipe()" class="hover:text-amber-900 flex items-center gap-1 text-base font-bold">
+                            ${svgs.chevronLeft} Índice
+                        </button>
+                    </div>
+
+                    <div class="z-10 max-w-3xl mx-auto w-full bg-white/40 p-4 md:p-8 shadow-sm border border-amber-900/10 rounded-sm relative">
+                        <div class="absolute top-4 right-4 opacity-10 text-amber-900 pointer-events-none">
+                            ${svgs.utensils}
+                        </div>
+
+                        <div class="text-center mb-6 relative">
+                            <h2 class="text-3xl md:text-5xl font-playfair text-amber-950 mb-4 tracking-wide leading-tight flex items-center justify-center gap-3">
+                                ${recipe.title}
+                                ${recipe.isUntested ? `<span class="text-amber-600/80 animate-pulse" title="Receta por descubrir">${svgs.sparkles}</span>` : ''}
+                            </h2>
+                            <div class="flex justify-center gap-4 text-amber-800 italic text-xs md:text-base">
+                                <span class="border-r border-amber-800/30 pr-4">Rendimiento: ${recipe.yield}</span>
+                                <span>Tiempo: ${recipe.time}</span>
+                            </div>
+                        </div>
+
+                        ${antlerDivider}
+
+                        ${recipe.cookingTable ? `
+                            <div class="mb-8 overflow-hidden rounded-sm border border-amber-900/20 bg-amber-50/30">
+                                <h3 class="bg-amber-900/10 p-2 text-center font-bold text-amber-900 uppercase tracking-widest text-sm">Tabla de Cocción</h3>
+                                <table class="w-full text-left text-sm text-amber-950">
+                                    <thead class="bg-amber-900/5 text-xs uppercase tracking-wide">
+                                        <tr><th class="p-3 font-bold border-b border-amber-900/10">Punto</th><th class="p-3 font-bold border-b border-amber-900/10">Temp</th><th class="p-3 font-bold border-b border-amber-900/10">Tiempo</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        ${recipe.cookingTable.map(row => `
+                                            <tr class="border-b border-amber-900/5 last:border-0 hover:bg-amber-100/20">
+                                                <td class="p-3 align-top"><span class="font-bold block">${row.point}</span><span class="text-xs italic opacity-70">${row.desc}</span></td>
+                                                <td class="p-3 align-top">${row.temp}</td>
+                                                <td class="p-3 align-top">${row.time}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                                <div class="p-3 text-xs italic text-amber-900/70 border-t border-amber-900/10 bg-amber-50/50">* Si usas air fryer, baja 10–15 °C y empieza a revisar 5 minutos antes.</div>
+                            </div>
+                        ` : ''}
+
+                        <div class="grid md:grid-cols-[1fr,2fr] gap-8">
+                            <div class="bg-amber-100/20 p-4 md:p-6 border-l-2 border-amber-900/30 rounded-r-sm">
+                                <h3 class="text-lg font-playfair font-bold text-amber-900 uppercase tracking-widest mb-4 border-b border-amber-900/10 pb-2 flex items-center gap-2">
+                                    <span class="text-xl leading-none">↟</span> Ingredientes
+                                </h3>
+                                <ul class="space-y-4 text-amber-950/90 text-sm md:text-base leading-relaxed">
+            `;
+
+            recipe.ingredients.forEach((ing, i) => {
+                const isSectionHeader = ing.startsWith('---');
+                const isChecked = savedChecks[i] || false;
+
+                if(isSectionHeader) {
+                    html += `<li class="pt-2 font-bold text-amber-800 text-xs tracking-wider uppercase text-center flex items-center justify-center gap-2"><span class="h-px w-4 bg-amber-800/30"></span>${ing.replace(/---/g, '')}<span class="h-px w-4 bg-amber-800/30"></span></li>`;
+                } else {
+                    // Procesar paréntesis para cursiva
+                    const formattedIng = ing.split('(').map((part, index) => index > 0 ? `<span class="italic text-xs opacity-80 block mt-0.5">(${part}</span>` : part).join('');
+                    
+                    html += `
+                        <li onclick="toggleIngredient(${recipe.id}, ${i}, this)" class="flex items-start gap-3 cursor-pointer transition-all active:scale-95 touch-manipulation ${isChecked ? 'opacity-40' : 'hover:text-amber-800'}">
+                            <div class="mt-0.5 flex-shrink-0 transition-colors p-1 icon-box ${isChecked ? 'text-amber-800' : 'text-amber-900/40'}">
+                                ${isChecked ? svgs.checkSquare : svgs.square}
+                            </div>
+                            <span class="py-1 text-content ${isChecked ? 'line-through decoration-amber-900/50' : ''}">${formattedIng}</span>
+                        </li>
+                    `;
+                }
+            });
+
+            html += `
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-playfair font-bold text-amber-900 uppercase tracking-widest mb-4 border-b border-amber-900/10 pb-2 flex items-center gap-2">
+                                    <span class="text-xl leading-none">↟</span> Preparación
+                                </h3>
+                                <div class="space-y-6 text-amber-950 leading-relaxed text-sm md:text-base">
+            `;
+
+            recipe.instructions.forEach((step, i) => {
+                const parts = step.split(':');
+                const title = parts[0];
+                const desc = parts.slice(1).join(':');
+                html += `
+                    <div class="flex gap-3 group">
+                        <p class="pt-0 text-justify"><span class="font-bold text-amber-900">${title}:</span>${desc}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                                </div>
+                                ${recipe.note ? `<div class="mt-8 p-4 bg-amber-50 border border-amber-900/20 italic text-amber-900/80 font-serif text-sm relative rounded-sm"><span class="absolute -top-3 left-4 bg-[#fdfbf7] px-2 text-amber-900/40 text-2xl">❝</span><span class="font-bold not-italic text-xs uppercase tracking-wider block mb-1">Nota:</span>${recipe.note}</div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            mainContainer.innerHTML = html;
+        }
+
+        function renderAdd() {
+            mainContainer.innerHTML = `
+                <div class="h-full flex flex-col p-4 md:p-12 relative bg-[#fdfbf7] overflow-y-auto custom-scrollbar">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
+                    <div class="z-10 w-full flex justify-between items-center mb-6 text-amber-900/60 sticky top-0 bg-[#fdfbf7] p-2 border-b border-amber-900/10">
+                        <button onclick="navigate('list')" class="hover:text-amber-900 flex items-center gap-1 text-sm font-bold">${svgs.x} Cancelar</button>
+                    </div>
+                    <div class="z-10 w-full max-w-2xl mx-auto pb-8">
+                        <h2 class="text-2xl md:text-3xl font-playfair text-amber-950 mb-6 text-center tracking-wide">Inscribir en el Grimorio</h2>
+                        <form id="add-recipe-form" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Nombre</label><input required name="title" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30 text-lg" placeholder="Ej. Estofado de Venado"></div>
+                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Categoría</label><select name="category" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors text-amber-950">${categories.map(c => `<option value="${c.id}">${c.title}</option>`).join('')}</select></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Rendimiento</label><input required name="yield" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30" placeholder="Ej. 4 almas"></div>
+                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Tiempo</label><input required name="time" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30" placeholder="Ej. 2 h 30 min"></div>
+                            </div>
+                            <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Ingredientes (uno por línea)</label><textarea required name="ingredients" rows="5" class="w-full bg-white/50 border border-amber-900/10 focus:border-amber-900 p-3 outline-none transition-colors rounded-sm placeholder-amber-900/30" placeholder="200 g (1 taza) de bayas..."></textarea></div>
+                            <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Ritual (uno por línea)</label><textarea required name="instructions" rows="5" class="w-full bg-white/50 border border-amber-900/10 focus:border-amber-900 p-3 outline-none transition-colors rounded-sm placeholder-amber-900/30" placeholder="1. Hervir en caldero..."></textarea></div>
+                            <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Nota</label><input name="note" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30" placeholder="Advertencia..."></div>
+                            <button type="submit" class="w-full py-4 bg-amber-950 text-[#fdfbf7] text-xl rounded-sm shadow hover:bg-amber-900 transition-all flex items-center justify-center gap-2 border border-amber-900 active:scale-95">${svgs.save} Sellar en el Libro</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('add-recipe-form').onsubmit = function(e) {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const newRec = {
+                    id: Date.now(),
+                    title: formData.get('title'),
+                    category: formData.get('category'),
+                    yield: formData.get('yield'),
+                    time: formData.get('time'),
+                    ingredients: formData.get('ingredients').split('\n').filter(l => l.trim() !== ''),
+                    instructions: formData.get('instructions').split('\n').filter(l => l.trim() !== ''),
+                    note: formData.get('note')
+                };
+                appState.recipes.push(newRec);
+                navigate('list');
+            };
+        }
+
+        // --- LÓGICA ---
+
+        function navigate(view) {
+            appState.view = view;
+            if (view === 'cover') renderCover();
+            else if (view === 'list') renderList();
+            else if (view === 'add') renderAdd();
+        }
+
+        function selectRecipe(id) {
+            appState.selectedRecipeId = id;
+            appState.view = 'details';
+            renderDetail();
+        }
+
+        function exitRecipe() {
+            // Limpiar localStorage de la receta actual al salir
+            if(appState.selectedRecipeId) {
+                localStorage.removeItem(`recipe_checks_${appState.selectedRecipeId}`);
+            }
+            appState.selectedRecipeId = null;
+            navigate('list');
+        }
+
+        function toggleIngredient(recipeId, index, el) {
+            const key = `recipe_checks_${recipeId}`;
+            const currentChecks = JSON.parse(localStorage.getItem(key) || '{}');
+            const newState = !currentChecks[index];
+            
+            currentChecks[index] = newState;
+            localStorage.setItem(key, JSON.stringify(currentChecks));
+
+            // Actualizar visualmente sin re-renderizar todo
+            const iconBox = el.querySelector('.icon-box');
+            const textContent = el.querySelector('.text-content');
+            
+            if (newState) {
+                el.classList.add('opacity-40');
+                el.classList.remove('hover:text-amber-800');
+                iconBox.innerHTML = svgs.checkSquare;
+                iconBox.classList.replace('text-amber-900/40', 'text-amber-800');
+                textContent.classList.add('line-through', 'decoration-amber-900/50');
+            } else {
+                el.classList.remove('opacity-40');
+                el.classList.add('hover:text-amber-800');
+                iconBox.innerHTML = svgs.square;
+                iconBox.classList.replace('text-amber-800', 'text-amber-900/40');
+                textContent.classList.remove('line-through', 'decoration-amber-900/50');
+            }
+        }
+
+        // --- INICIO ---
+        renderCover();
+
+    </script>
+</body>
+</html>
