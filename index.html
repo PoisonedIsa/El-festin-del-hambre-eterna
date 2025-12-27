@@ -8,6 +8,9 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Precarga de Imagen para Marca de Agua -->
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/PoisonedIsa/El-festin-del-hambre-eterna/3545e000681058ed1bcc2730edd609cf687314a9/visuales/ramas%20marca%20de%20agua.webp">
+
     <!-- Fuentes Google -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
@@ -56,6 +59,12 @@
             0%, 100% { opacity: 1; }
             50% { opacity: .5; }
         }
+
+        /* Clase para la marca de agua en hover */
+        .watermark-hover {
+            filter: sepia(1) hue-rotate(340deg) saturate(0.5) contrast(1.1);
+            mix-blend-mode: multiply;
+        }
     </style>
 </head>
 <body class="bg-[#1a1410] text-amber-950 antialiased overflow-hidden w-full h-screen flex items-center justify-center p-0 md:p-8">
@@ -90,6 +99,10 @@
     </div>
 
     <script>
+        // --- PRECARGA DE IMÁGENES ---
+        const watermarkImage = new Image();
+        watermarkImage.src = "https://raw.githubusercontent.com/PoisonedIsa/El-festin-del-hambre-eterna/3545e000681058ed1bcc2730edd609cf687314a9/visuales/ramas%20marca%20de%20agua.webp";
+
         // --- DATOS ---
         const categories = [
             { id: 'elixires', title: "Elixires y Pociones", description: "Bebidas y jarabes para el alma" },
@@ -100,7 +113,6 @@
         ];
 
         const initialRecipes = [
-            // ... (Todas las recetas del paso anterior) ...
             {
                 id: 1,
                 category: 'elixires',
@@ -161,7 +173,6 @@
                 instructions: ["1. La Raíz de Oro: Derretir mantequilla con azúcar morena. Añadir especias, ralladura, zanahoria y nueces. Cocinar 7 min (reducir líquido) y enfriar.", "2. La Emulsión Vital: Blanquear huevos con azúcar blanca hasta espumar. Añadir aceite en hilo, jugo y vainilla. Integrar la mezcla de zanahoria fría.", "3. La Lluvia Seca: Tamizar harina, polvos de hornear y sal. Incorporar con movimientos envolventes en dos tandas.", "4. El Nacimiento: Verter en molde de 20 cm engrasado. Hornear a 170°C por 45-50 min. Enfriar en rejilla.", "5. La Nieve Cremosa: Batir mantequilla con azúcar glas hasta cremar. Añadir queso crema y batir justo hasta integrar. Refrigerar 30 min.", "6. El Ámbar Líquido: Fundir azúcar a fuego bajo hasta color ámbar. Añadir nata caliente con precaución. Integrar, añadir mantequilla y sal. Enfriar.", "7. La Torre Dulce: Cortar el bizcocho en dos capas. Rellenar con frosting y un hilo de caramelo. Cubrir exterior con frosting.", "8. El Baño de Oro: Verter el resto del caramelo salado sobre la tarta antes de servir."],
                 note: "La zanahoria caramelizada aporta una humedad y profundidad de sabor inigualables."
             },
-            // --- DELICIAS ---
             {
                 id: 12,
                 category: 'delicias',
@@ -228,19 +239,19 @@
                 time: "1 h 30 min + 7 h reposo",
                 ingredients: [
                     "--- EL JARABE ÁUREO ---",
-                    "200 g (1 taza) de pulpa de maracuyá",
-                    "100 g (1/2 taza) de azúcar blanca",
+                    "300 g (1 1/2 tazas) de pulpa de maracuyá",
+                    "125 g (1/2 taza + 2 cdas) de azúcar blanca",
                     "--- LA BASE OSCURA ---",
                     "200 g (1 paquete) de galletas de chocolate",
-                    "80 g (5 cdas) de mantequilla sin sal derretida",
+                    "200 g (1 taza) de mantequilla sin sal derretida",
                     "--- EL RELLENO ---",
-                    "400 g (2 tazas) de queso crema a temp. ambiente",
-                    "120 g (1/2 taza) de azúcar blanca",
-                    "250 g (1 taza) de yogur natural (sin filtrar)",
-                    "150 ml (2/3 taza) de crema de leche",
-                    "3 huevos grandes",
-                    "45 g (3 cdas) de harina de trigo",
-                    "5 ml (1 cdta) de esencia de vainilla"
+                    "500 g (2 1/4 tazas) de queso crema a temp. ambiente",
+                    "150 g (3/4 taza) de azúcar blanca",
+                    "315 g (1 1/4 tazas) de yogur natural",
+                    "190 ml (3/4 taza) de crema de leche",
+                    "4 huevos grandes",
+                    "75 g (5 cdas rasas) de harina de trigo",
+                    "6 ml (1 cdta generosa) de esencia de vainilla"
                 ],
                 instructions: [
                     "1. El Néctar Dorado: En una olla, cocinar la pulpa y el azúcar del jarabe a fuego medio hasta reducir a consistencia de miel. Enfriar totalmente.",
@@ -331,14 +342,33 @@
             sparkles: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>`
         };
 
-        const antlerCorner = (rot) => `
-            <svg viewBox="0 0 100 100" class="absolute w-16 h-16 md:w-32 md:h-32 text-amber-900 opacity-80 md:opacity-90 pointer-events-none" style="transform: rotate(${rot}deg); top: ${rot===180||rot===270?'auto':'0'}; bottom: ${rot===180||rot===270?'0':'auto'}; left: ${rot===0||rot===270?'0':'auto'}; right: ${rot===90||rot===180?'0':'auto'};">
-                <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M5,5 C15,15 25,25 45,35 M5,5 C15,25 15,45 20,85" />
-                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M25,25 C35,20 50,15 75,20 M50,18 C55,10 65,5 80,5 M60,19 C65,25 75,30 90,25" />
-                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15,45 C20,55 35,65 30,90 M25,60 C35,65 50,70 60,85 M18,55 C10,60 5,75 2,90" />
-                <circle cx="5" cy="5" r="2" fill="currentColor" />
-            </svg>
+        const renderBranch = (positionClass) => `
+            <div class="absolute ${positionClass} pointer-events-none" style="width: 8rem; height: 8rem; z-index: 10;">
+                <svg viewBox="0 0 100 100" class="w-full h-full text-amber-900 opacity-80 md:opacity-90">
+                    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M5,5 C15,15 25,25 45,35 M5,5 C15,25 15,45 20,85" />
+                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M25,25 C35,20 50,15 75,20 M50,18 C55,10 65,5 80,5 M60,19 C65,25 75,30 90,25" />
+                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15,45 C20,55 35,65 30,90 M25,60 C35,65 50,70 60,85 M18,55 C10,60 5,75 2,90" />
+                    <circle cx="5" cy="5" r="2" fill="currentColor" />
+                </svg>
+            </div>
         `;
+        
+        // Estilos específicos para cada esquina usando rotación de SVG
+        // corner-tl: Rotación 0 (default: root en 5,5 top-left)
+        // corner-tr: Rotación 90 (root pasa a top-right)
+        // corner-br: Rotación 180 (root pasa a bottom-right)
+        // corner-bl: Rotación 270 (root pasa a bottom-left)
+        const cornerStyles = `
+            .corner-tl { top: 0; left: 0; transform: rotate(0deg); }
+            .corner-tr { top: 0; right: 0; transform: rotate(90deg); }
+            .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
+            .corner-bl { bottom: 0; left: 0; transform: rotate(270deg); }
+        `;
+        
+        // Inyectar estilos
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = cornerStyles;
+        document.head.appendChild(styleSheet);
 
         const antlerDivider = `
             <div class="flex items-center justify-center my-6 md:my-8 opacity-60 text-amber-900">
@@ -390,7 +420,11 @@
             mainContainer.innerHTML = `
                 <div class="flex flex-col items-center justify-center h-full text-center p-4 md:p-8 relative overflow-hidden">
                     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
-                    ${antlerCorner(0)} ${antlerCorner(90)} ${antlerCorner(180)} ${antlerCorner(270)}
+                    
+                    ${renderBranch('corner-tl')} 
+                    ${renderBranch('corner-tr')} 
+                    ${renderBranch('corner-br')} 
+                    ${renderBranch('corner-bl')}
                     
                     ${wendigoIcon}
 
@@ -414,7 +448,9 @@
             let html = `
                 <div class="h-full flex flex-col p-4 md:p-12 relative">
                     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
-                    ${antlerCorner(0)} ${antlerCorner(90)}
+                    
+                    ${renderBranch('corner-tl')} 
+                    ${renderBranch('corner-tr')} 
                     
                     <div class="z-10 text-center mb-6 mt-4">
                         <h2 class="text-3xl md:text-4xl font-playfair text-amber-950 mb-2 border-b-2 border-amber-900/20 inline-block pb-2 px-8 uppercase tracking-widest">Índice del Bosque</h2>
@@ -443,11 +479,23 @@
                 `;
 
                 catRecipes.forEach(recipe => {
+                    const isMasas = recipe.category === 'masas';
                     html += `
                         <div onclick="selectRecipe(${recipe.id})" class="group cursor-pointer p-4 border border-amber-900/10 hover:border-amber-900/50 rounded-sm transition-all bg-white/30 hover:bg-amber-100/30 shadow-sm relative overflow-hidden active:scale-[0.98] touch-manipulation">
-                            <div class="absolute -right-4 -bottom-4 opacity-0 group-hover:opacity-10 transition-opacity text-amber-900">
+                            ${isMasas ? `
+                            <!-- Marca de Agua para Masas Ancestrales -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
+                                <img src="https://raw.githubusercontent.com/PoisonedIsa/El-festin-del-hambre-eterna/3545e000681058ed1bcc2730edd609cf687314a9/visuales/ramas%20marca%20de%20agua.webp" 
+                                     class="w-full h-full object-cover watermark-hover" 
+                                     alt="Marca de agua" />
+                            </div>
+                            ` : `
+                            <!-- SVG Original para otras categorías -->
+                            <div class="absolute -right-4 -bottom-4 opacity-0 group-hover:opacity-10 transition-opacity text-amber-900 z-0">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50,100 C60,60 80,40 100,20" /><path d="M60,60 C70,50 90,50 100,40" /></svg>
                             </div>
+                            `}
+                            
                             <div class="flex justify-between items-baseline mb-2 relative z-10">
                                 <span class="font-playfair text-lg md:text-xl font-bold text-amber-950 group-hover:text-amber-800 flex items-center gap-2">
                                     ${recipe.title}
@@ -455,7 +503,7 @@
                                 </span>
                                 <span class="text-xs text-amber-800/50 italic whitespace-nowrap ml-2">Ver</span>
                             </div>
-                            <div class="h-px w-full bg-amber-900/10 group-hover:bg-amber-900/30 transition-colors"></div>
+                            <div class="h-px w-full bg-amber-900/10 group-hover:bg-amber-900/30 transition-colors relative z-10"></div>
                             <div class="flex gap-4 mt-2 text-xs text-amber-800/70 uppercase tracking-widest relative z-10">
                                 <span class="flex items-center gap-1">${svgs.clock} ${recipe.time}</span>
                                 <span class="flex items-center gap-1">${svgs.users} ${recipe.yield}</span>
