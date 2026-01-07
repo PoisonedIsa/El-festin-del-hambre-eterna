@@ -65,6 +65,14 @@
             filter: sepia(1) hue-rotate(340deg) saturate(0.5) contrast(1.1);
             mix-blend-mode: multiply;
         }
+        
+        /* Superíndices para notas */
+        sup {
+            font-size: 0.6em;
+            vertical-align: super;
+            color: #d97706; /* amber-600 */
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="bg-[#1a1410] text-amber-950 antialiased overflow-hidden w-full h-screen flex items-center justify-center p-0 md:p-8">
@@ -117,21 +125,40 @@
                 id: 1,
                 category: 'elixires',
                 title: "Sirope de Caramelo: Oro Líquido",
-                yield: "1 taza",
+                yield: "250 ml",
                 time: "15 min",
                 ingredients: ["200 g (1 taza) de azúcar blanca", "120 ml (1/2 taza) de crema de leche", "30 g (2 cdas) de mantequilla", "120 ml (1/2 taza) de leche (cantidad necesaria)", "1 pizca de sal"],
-                instructions: ["1. El Caramelo: Verter el azúcar en una olla seca a fuego medio. Dejar fundir sin remover excesivamente hasta obtener un color ámbar dorado.", "2. Materia Grasa: Incorporar la mantequilla con cuidado y mezclar vigorosamente hasta integrar.", "3. Templado: Verter la crema de leche poco a poco mientras se revuelve (la mezcla burbujeará con fuerza).", "4. Aligerar: Agregar la leche líquida gradualmente hasta conseguir la textura deseada.", "5. Finalizar: Añadir la sal, retirar del fuego y dejar enfriar antes de almacenar."],
-                note: "Ideal para bañar postres o endulzar el café. Se conserva refrigerado por varias semanas."
+                instructions: [
+                    "1. El Caramelo: Verter el azúcar en una olla seca a fuego medio. Dejar fundir sin remover excesivamente hasta obtener un color ámbar dorado<sup>1</sup>.",
+                    "2. Materia Grasa: Incorporar la mantequilla con cuidado y mezclar vigorosamente hasta integrar.",
+                    "3. Templado: Verter la crema de leche poco a poco mientras se revuelve<sup>2</sup>.",
+                    "4. Aligerar: Agregar la leche líquida gradualmente hasta conseguir la textura deseada.",
+                    "5. Finalizar: Añadir la sal, retirar del fuego y dejar enfriar antes de almacenar."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Paciencia: Si remueves antes de tiempo, el azúcar se cristalizará y perderá su magia." },
+                    { symbol: "2", text: "El vapor es intenso; protege tus manos durante este choque térmico." },
+                    { symbol: "❝", text: "Ideal para bañar postres o endulzar el café. Se conserva refrigerado por varias semanas." }
+                ]
             },
             {
                 id: 2,
                 category: 'elixires',
                 title: "Bailey's: Elixir del Crepúsculo",
-                yield: "1 litro aprox.",
+                yield: "1000 ml",
                 time: "20 min",
                 ingredients: ["400 g (1 lata) de leche condensada", "200 ml (3/4 taza) de leche entera", "200 g (3/4 taza) de crema de leche", "100 ml (1/3 taza) de café espresso fuerte", "5 ml (1 cdta) de esencia de vainilla", "7 g (1 cda) de cacao en polvo", "200 ml (aprox. 3/4 taza) de whiskey"],
-                instructions: ["1. La Base Oscura: Preparar el café espresso y dejarlo enfriar completamente (vital para no cortar los lácteos).", "2. La Trinidad Láctea: Combinar en un bol o licuadora la leche condensada, la leche entera y la crema de leche.", "3. Aromatizar: Añadir la vainilla y el cacao en polvo. Batir enérgicamente para disolver los grumos.", "4. Fusión: Verter el café frío a la mezcla y remover hasta unificar el color.", "5. El Espíritu: Agregar el whiskey al final y mezclar suavemente. Reposar para bajar la espuma antes de embotellar."],
-                note: "Mejora con el tiempo. Dejar madurar en frío 2 días. Agitar siempre antes de servir."
+                instructions: [
+                    "1. La Base Oscura: Preparar el café espresso y dejarlo enfriar completamente<sup>1</sup>.",
+                    "2. La Trinidad Láctea: Combinar en un bol o licuadora la leche condensada, la leche entera y la crema de leche.",
+                    "3. Aromatizar: Añadir la vainilla y el cacao en polvo. Batir enérgicamente para disolver los grumos.",
+                    "4. Fusión: Verter el café frío a la mezcla y remover hasta unificar el color.",
+                    "5. El Espíritu: Agregar el whiskey al final y mezclar suavemente. Reposar para bajar la espuma antes de embotellar."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Vital para no cortar los lácteos. Si el café está caliente, la crema se separará irremediablemente." },
+                    { symbol: "❝", text: "Mejora con el tiempo. Dejar madurar en frío 2 días. Agitar siempre antes de servir." }
+                ]
             },
             {
                 id: 3,
@@ -140,53 +167,194 @@
                 yield: "400 ml",
                 time: "15 min",
                 ingredients: ["150 g (1/2 taza) de crema de avellanas (Nutella)", "20 g (2.5 cdas) de cacao en polvo (opcional)", "80 ml (1/3 taza) de leche entera", "80 ml (1/3 taza) de crema de leche", "30 g (2 cdas) de azúcar blanca", "1 pizca de sal", "5 ml (1 cdta) de esencia de vainilla"],
-                instructions: ["1. Calentar: Disolver el azúcar en la leche y la crema de leche en una olla a fuego bajo.", "2. Fundir: Agregar la crema de avellanas y remover hasta integrar completamente.", "3. Intensificar: Añadir el cacao en polvo tamizado si se desea un sabor más profundo.", "4. Espesar: Cocinar a fuego lento durante 5-7 minutos sin dejar de mover hasta lograr consistencia de jarabe.", "5. Acabado: Retirar del fuego, añadir sal y vainilla. Enfriar antes de envasar."],
-                note: "Perfecto para cafés helados o topping. Vida útil de 2 semanas en refrigeración."
+                instructions: [
+                    "1. Calentar: Disolver el azúcar en la leche y la crema de leche en una olla a fuego bajo.",
+                    "2. Fundir: Agregar la crema de avellanas y remover hasta integrar completamente.",
+                    "3. Intensificar: Añadir el cacao en polvo tamizado si se desea un sabor más profundo.",
+                    "4. Espesar: Cocinar a fuego lento durante 5-7 minutos sin dejar de mover hasta lograr consistencia de jarabe<sup>1</sup>.",
+                    "5. Acabado: Retirar del fuego, añadir sal y vainilla. Enfriar antes de envasar."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "No dejes de mover; el chocolate se quema con facilidad y amarga la mezcla." },
+                    { symbol: "❝", text: "Perfecto para cafés helados o topping. Vida útil de 2 semanas en refrigeración." }
+                ]
+            },
+            {
+                id: 19,
+                category: 'elixires',
+                title: "Yogur y Frutos: Sangre de Bosque",
+                yield: "4 porciones",
+                time: "45 min",
+                ingredients: ["200 g (1.5 tazas) de mezcla de frutos rojos deshidratados (Jamaica, mora, fresa)", "1 L (4 tazas) de agua", "Azúcar blanca (cantidad igual al peso del extracto)", "1 pizca de sal", "250 g (1 taza) de yogur natural sin azúcar (para servir)"],
+                instructions: [
+                    "1. La Extracción Carmesí: Hervir el agua con los frutos secos en una olla a fuego medio-bajo hasta reducir y concentrar el color y sabor.",
+                    "2. El Potenciador: Agregar una pizca mínima de sal durante la reducción para resaltar la nitidez de los frutos.",
+                    "3. El Filtrado: Colar el líquido para separar los sólidos y obtener un extracto puro. Pesar el líquido resultante.",
+                    "4. El Equilibrio Áureo: Añadir la misma cantidad de azúcar que el peso del líquido (proporción 1:1).",
+                    "5. La Cristalización: Cocinar a fuego bajo removiendo constantemente hasta disolver el azúcar por completo.",
+                    "6. El Reposo: Enfriar a temperatura ambiente y embotellar en vidrio.",
+                    "7. La Ofrenda Final: Servir sobre una base de yogur natural frío, permitiendo que el sirope sangre sobre la blancura."
+                ],
+                footnotes: [
+                    { symbol: "❝", text: "La sal es el secreto para que los sabores frutales exploten. El sirope se conserva meses en frío." }
+                ]
             },
             {
                 id: 7,
                 category: 'masas',
                 title: "Rollos de Canela: Espirales del Bosque",
-                yield: "12 rollos",
+                yield: "12 unidades",
                 time: "3 h 30 min",
                 ingredients: ["--- MASA ---", "250 ml (1 taza) de leche tibia (35°C)", "50 g (1/4 taza) de azúcar blanca", "8 g (2.5 cdtas) de levadura seca", "100 g (7 cdas) de mantequilla fundida", "2 huevos grandes", "550 g (4 1/2 tazas) de harina de fuerza", "5 g (1 cdta) de sal", "100 ml (1/3 taza) de nata líquida (para baño)", "--- RELLENO ---", "120 g (1/2 taza) de mantequilla pomada", "120 g (1/2 taza) de azúcar morena", "10 g (1.5 cdas) de canela en polvo", "--- GLASEADO ---", "40 g (3 cdas) de mantequilla", "100 g (1/2 taza) de queso crema", "40 g (1/3 taza) de azúcar glas"],
-                instructions: ["1. Activar: Mezclar la leche tibia con una cucharada de azúcar y la levadura. Reposar 10 min hasta espumar.", "2. Mezclar: En un bol, unir el resto del azúcar, mantequilla fundida, huevos y el fermento. Añadir harina y sal gradualmente.", "3. Amasar: Trabajar la masa 15-20 minutos hasta que sea lisa y elástica. Fermentar 2 horas en lugar cálido.", "4. Formar: Estirar la masa en rectángulo (60x40 cm). Untar mantequilla pomada y cubrir con azúcar y canela.", "5. Cortar: Enrollar con cuidado y cortar 12 piezas (usar hilo dental para cortes limpios).", "6. Leudado Final: Colocar en bandeja profunda con separación. Reposar 45 minutos tapado.", "7. El Secreto: Verter la nata líquida tibia sobre los huecos entre los rollos justo antes de hornear.", "8. Hornear: Cocinar a 180°C por 20-25 minutos hasta dorar.", "9. Glasear: Batir los ingredientes del glaseado y cubrir los rollos aún calientes."],
-                note: "El baño de nata es el secreto para una suavidad extrema."
+                instructions: [
+                    "1. Activar: Mezclar la leche tibia con una cucharada de azúcar y la levadura. Reposar 10 min hasta espumar.",
+                    "2. Mezclar: En un bol, unir el resto del azúcar, mantequilla fundida, huevos y el fermento. Añadir harina y sal gradualmente.",
+                    "3. Amasar: Trabajar la masa 15-20 minutos hasta que sea lisa y elástica. Fermentar 2 horas en lugar cálido.",
+                    "4. Formar: Estirar la masa en rectángulo (60x40 cm). Untar mantequilla pomada y cubrir con azúcar y canela.",
+                    "5. Cortar: Enrollar con cuidado y cortar 12 piezas<sup>1</sup>.",
+                    "6. Leudado Final: Colocar en bandeja profunda con separación. Reposar 45 minutos tapado.",
+                    "7. El Secreto: Verter la nata líquida tibia sobre los huecos entre los rollos justo antes de hornear<sup>2</sup>.",
+                    "8. Hornear: Cocinar a 180°C por 20-25 minutos hasta dorar.",
+                    "9. Glasear: Batir los ingredientes del glaseado y cubrir los rollos aún calientes."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Usa hilo dental para cortar; el cuchillo aplasta los rollos y arruina la espiral." },
+                    { symbol: "2", text: "Este baño lácteo es la clave para que queden extra suaves, estilo Cinnabon." },
+                    { symbol: "❝", text: "El baño de nata es el secreto para una suavidad extrema." }
+                ]
             },
             {
                 id: 10,
                 category: 'masas',
-                title: "Focaccia Manzana y Canela: Ofrenda de Otoño",
-                yield: "1 molde (23x33 cm)",
+                title: "Focaccia: Ofrenda de Otoño",
+                yield: "12 porciones",
                 time: "5 h 00 min",
                 ingredients: ["--- MASA ---", "500 g (4 tazas) de harina de fuerza", "420 ml (1 3/4 tazas) de agua tibia", "6 g (1.5 cdtas) de levadura seca", "15 ml (1 cda) de aceite de oliva", "10 g (2 cdtas) de sal fina", "5 g (2 cdtas) de canela en polvo", "5 g (1 cdta) de miel", "--- RELLENO ---", "450 g (aprox. 4) manzanas peladas y en cubos", "30 g (2 cdas) de mantequilla", "60 g (1/4 taza) de azúcar morena", "4 g (1.5 cdtas) de canela en polvo", "Espesante: 5 g maicena + 10 ml agua", "--- COBERTURA ---", "60 g (4 cdas) de mantequilla fundida", "85 g (1/3 taza) de azúcar morena", "--- GLASEADO ---", "90 g (3/4 taza) de azúcar glas", "30 ml (2 cdas) de leche"],
-                instructions: ["1. Activar: Mezclar agua, levadura y miel. Esperar 5 minutos hasta ver espuma.", "2. Integrar: Añadir aceite, harina, sal y canela. Mezclar hasta que no quede harina seca (sin amasar mucho). Reposar 15 min.", "3. Pliegues: Estirar un borde de la masa y doblarlo al centro. Girar y repetir 4 veces. Reposar 15 min. Repetir el ciclo 3 veces.", "4. Fermentación: Tapar y dejar crecer 1 h 30 min hasta duplicar tamaño.", "5. Relleno: Cocinar manzanas con mantequilla, azúcar y canela 8 min. Añadir maicena diluida, espesar y enfriar.", "6. Montaje: Colocar masa en molde engrasado. Cubrir con MITAD de cobertura y MITAD de manzanas.", "7. El Sobre: Doblar la masa en tríptico (encerrando el relleno). Voltear (costura abajo) y estirar para cubrir el molde. Fermentar 1 h 30 min.", "8. Dimpling: Verter el resto de cobertura y manzanas. Hundir los dedos para crear hoyuelos.", "9. Hornear: Cocinar a 220°C por 25 minutos. Decorar con glaseado al enfriar un poco."],
-                note: "Pan dulce húmedo estilo postre. Consumir el mismo día."
+                instructions: [
+                    "1. Activar: Mezclar agua, levadura y miel. Esperar 5 minutos hasta ver espuma.",
+                    "2. Integrar: Añadir aceite, harina, sal y canela. Mezclar hasta que no quede harina seca (sin amasar mucho). Reposar 15 min.",
+                    "3. Pliegues: Estirar un borde de la masa y doblarlo al centro. Girar y repetir 4 veces. Reposar 15 min. Repetir el ciclo 3 veces.",
+                    "4. Fermentación: Tapar y dejar crecer 1 h 30 min hasta duplicar tamaño.",
+                    "5. Relleno: Cocinar manzanas con mantequilla, azúcar y canela 8 min. Añadir maicena diluida, espesar y enfriar.",
+                    "6. Montaje: Colocar masa en molde engrasado. Cubrir con MITAD de cobertura y MITAD de manzanas.",
+                    "7. El Sobre: Doblar la masa en tríptico (encerrando el relleno). Voltear (costura abajo) y estirar para cubrir el molde. Fermentar 1 h 30 min.",
+                    "8. Dimpling: Verter el resto de cobertura y manzanas. Hundir los dedos para crear hoyuelos<sup>1</sup>.",
+                    "9. Hornear: Cocinar a 220°C por 25 minutos. Decorar con glaseado al enfriar un poco."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Hunde tus dedos con decisión hasta casi tocar el fondo, pero sin rasgar la masa, para que el sabor penetre." },
+                    { symbol: "❝", text: "Pan dulce húmedo estilo postre. Consumir el mismo día." }
+                ]
             },
             {
                 id: 11,
                 category: 'masas',
                 title: "Tarta de Zanahoria: Raíces de la Tierra",
-                yield: "8-10 porciones",
+                yield: "10 porciones",
                 time: "2 h 45 min",
                 ingredients: ["--- ZANAHORIA CARAMELIZADA ---", "500 g (aprox. 5) zanahorias ralladas finas", "120 g (1 taza) de nueces troceadas", "120 g (1/2 taza) de mantequilla", "70 g (1/3 taza) de azúcar morena", "Ralladura de 1 naranja", "5 g (1 cdta) de canela en polvo", "5 g (1 cdta) de jengibre en polvo", "--- BIZCOCHO ---", "4 huevos grandes", "100 g (1/2 taza) de azúcar blanca", "140 ml (2/3 taza) de aceite de girasol", "60 ml (1/4 taza) de jugo de naranja", "5 ml (1 cdta) de esencia de vainilla", "230 g (1 3/4 tazas) de harina de trigo", "15 g (1 sobre) de polvos de hornear", "1 pizca de sal", "--- FROSTING ---", "300 g (1 1/4 tazas) de queso crema frío", "150 g (2/3 taza) de mantequilla pomada", "150 g (1 1/4 tazas) de azúcar glas", "--- CARAMELO SALADO ---", "150 g (3/4 taza) de azúcar blanca", "150 ml (2/3 taza) de nata para montar caliente", "50 g (3.5 cdas) de mantequilla", "3 g (1/2 cdta) de sal"],
-                instructions: ["1. La Raíz de Oro: Derretir mantequilla con azúcar morena. Añadir especias, ralladura, zanahoria y nueces. Cocinar 7 min (reducir líquido) y enfriar.", "2. La Emulsión Vital: Blanquear huevos con azúcar blanca hasta espumar. Añadir aceite en hilo, jugo y vainilla. Integrar la mezcla de zanahoria fría.", "3. La Lluvia Seca: Tamizar harina, polvos de hornear y sal. Incorporar con movimientos envolventes en dos tandas.", "4. El Nacimiento: Verter en molde de 20 cm engrasado. Hornear a 170°C por 45-50 min. Enfriar en rejilla.", "5. La Nieve Cremosa: Batir mantequilla con azúcar glas hasta cremar. Añadir queso crema y batir justo hasta integrar. Refrigerar 30 min.", "6. El Ámbar Líquido: Fundir azúcar a fuego bajo hasta color ámbar. Añadir nata caliente con precaución. Integrar, añadir mantequilla y sal. Enfriar.", "7. La Torre Dulce: Cortar el bizcocho en dos capas. Rellenar con frosting y un hilo de caramelo. Cubrir exterior con frosting.", "8. El Baño de Oro: Verter el resto del caramelo salado sobre la tarta antes de servir."],
-                note: "La zanahoria caramelizada aporta una humedad y profundidad de sabor inigualables."
+                instructions: [
+                    "1. La Raíz de Oro: Derretir mantequilla con azúcar morena. Añadir especias, ralladura, zanahoria y nueces. Cocinar 7 min (reducir líquido) y enfriar.",
+                    "2. La Emulsión Vital: Blanquear huevos con azúcar blanca hasta espumar. Añadir aceite en hilo, jugo y vainilla. Integrar la mezcla de zanahoria fría.",
+                    "3. La Lluvia Seca: Tamizar harina, polvos de hornear y sal. Incorporar con movimientos envolventes en dos tandas<sup>1</sup>.",
+                    "4. El Nacimiento: Verter en molde de 20 cm engrasado. Hornear a 170°C por 45-50 min. Enfriar en rejilla.",
+                    "5. La Nieve Cremosa: Batir mantequilla con azúcar glas hasta cremar. Añadir queso crema y batir justo hasta integrar. Refrigerar 30 min.",
+                    "6. El Ámbar Líquido: Fundir azúcar a fuego bajo hasta color ámbar. Añadir nata caliente con precaución. Integrar, añadir mantequilla y sal. Enfriar.",
+                    "7. La Torre Dulce: Cortar el bizcocho en dos capas. Rellenar con frosting y un hilo de caramelo. Cubrir exterior con frosting.",
+                    "8. El Baño de Oro: Verter el resto del caramelo salado sobre la tarta antes de servir."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Mezcla solo hasta que desaparezca la harina. Si bates de más, el bizcocho quedará duro." },
+                    { symbol: "❝", text: "La zanahoria caramelizada aporta una humedad y profundidad de sabor inigualables." }
+                ]
             },
+            {
+                id: 21,
+                category: 'masas',
+                title: "Brioche: Rosas y Roble",
+                yield: "12 porciones",
+                time: "4 h 30 min",
+                ingredients: ["--- MASA BRIOCHE ---", "580 g (4 3/4 tazas) de harina de fuerza", "180 ml (3/4 taza) de leche entera tibia", "120 g (1/2 taza) de azúcar blanca", "8 g (1 sobre) de levadura seca", "2 huevos grandes (a temp. ambiente)", "85 g (6 cdas) de mantequilla (punto pomada)", "Ralladura de 1/2 limón y 1 naranja", "30 ml (2 cdas) de whisky o ron", "1 pizca de sal", "--- AGUA DE AZAHAR CASERA ---", "Cáscara de 1 naranja (sin parte blanca)", "1 rama de canela y 1 anís estrellado", "50 ml (1/4 taza) de agua caliente", "--- COSTRA DE NIEVE ---", "100 g (1/2 taza) de mantequilla", "100 g (3/4 taza) de azúcar glas", "100 g (3/4 taza) de harina de trigo", "--- ALMÍBAR DE ROSAS ---", "50 ml (1/4 taza) de agua", "50 g (1/4 taza) de azúcar", "1 chorrito de whisky o ron", "Pétalos de rosa deshidratados (o frescos)"],
+                instructions: [
+                    "1. El Despertar Aromático: Infusionar la cáscara de naranja, canela y anís en agua caliente 15 min (para el Agua de Azahar). Aparte, mezclar la leche tibia con la levadura y una pizca de azúcar; dejar activar 15 min. Frotar el resto del azúcar con las ralladuras cítricas.",
+                    "2. La Fusión de Elementos: En un bol, integrar harina, azúcar aromatizada, huevos, fermento, whisky y 2 cdas del agua de azahar colada. Amasar. Incorporar la mantequilla pomada poco a poco hasta lograr una masa de seda<sup>1</sup>.",
+                    "3. El Primer Aliento: Dejar reposar la masa en un bol aceitado hasta que duplique su volumen (aprox. 1 h 30 min - 2 h).",
+                    "4. El Velo de Nieve: Formar un pan (molde o campo). Para la costra: mezclar mantequilla, azúcar glas y harina hasta obtener una pasta maleable. Barnizar el pan con huevo y colocar trozos de esta pasta encima. Fermentar 45 min.",
+                    "5. El Juicio del Fuego: Precalentar horno a 170°C. Hornear 20-25 min con calor solo ABAJO. Luego, 5-8 min con calor solo ARRIBA para dorar la costra.",
+                    "6. El Corazón Floral: Preparar almíbar hirviendo agua, azúcar y pétalos; apagar y añadir licor. Una vez frío el pan, cortar a la mitad y pincelar el interior con este almíbar.",
+                    "7. El Secreto Final: Rellenar generosamente con crema pastelera fría si se desea."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "La masa debe ser tan elástica que puedas estirarla hasta que sea casi transparente sin romperse (prueba de la ventana)." },
+                    { symbol: "❝", text: "El whisky suaviza la miga y el almíbar floral crea un contraste sorpresa con las notas amaderadas." }
+                ]
+            },
+            {
+                id: 23,
+                category: 'masas',
+                title: "Focaccia de Autor: Ajo y Anís",
+                yield: "12 porciones",
+                time: "4 h 00 min",
+                ingredients: [
+                    "--- EL CONFIT DE AJO ---",
+                    "2 cabezas de ajo (dientes pelados)",
+                    "200 ml (3/4 taza) de Aceite de Oliva Virgen Extra",
+                    "2 ramas de Romero fresco",
+                    "3 ramas de Tomillo fresco",
+                    "1 estrella de Anís estrellado",
+                    "--- LA MASA DE NUBE ---",
+                    "500 g (4 tazas) de Harina de fuerza (W > 280)",
+                    "200 ml (3/4 taza) de Leche entera tibia",
+                    "200 ml (3/4 taza) de Agua tibia",
+                    "15 g (1 cda) de Azúcar Morena",
+                    "7 g (1 sobre) de Levadura seca",
+                    "10 g (2 cdtas) de Sal fina",
+                    "30 ml (2 cdas) del Aceite confitado (listo)"
+                ],
+                instructions: [
+                    "1. El Confitado Botánico: Sumergir ajos y hierbas en aceite. Hornear a 140°C por 60 min hasta que el ajo esté tierno y dorado<sup>1</sup>.",
+                    "2. La Autólisis Láctea: Disolver levadura y azúcar en leche y agua. Añadir harina y 2 cdas de aceite confitado. Mezclar solo hasta integrar. Reposar 30 min.",
+                    "3. Los Pliegues de Fuerza: Espolvorear la sal. Con manos mojadas, hacer pliegues para integrar. Repetir pliegues cada 30 min durante 1.5 horas. Fermentar hasta duplicar<sup>2</sup>.",
+                    "4. El Lecho de Aceite: Aceitar bandeja con aceite de ajo. Verter masa. Reposar 45 min para que se relaje.",
+                    "5. La Huella Profunda: Hundir los dedos para crear hoyuelos (dimpling). Insertar los ajos confitados y hierbas. Terminar con sal gruesa.",
+                    "6. El Bronceado: Hornear a 200°C por 25-30 min hasta dorar. Enfriar en rejilla<sup>3</sup>."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "El aceite sobrante es oro líquido; guárdalo para cocinar otras cosas." },
+                    { symbol: "2", text: "La masa debe sentirse aireada y temblorosa, como una nube atrapada." },
+                    { symbol: "3", text: "Desmolda inmediatamente para evitar que el vapor ablande la base crujiente." },
+                    { symbol: "❝", text: "La pureza aromática de las hierbas y el dulzor sutil del ajo confitado crean una textura de nube." }
+                ]
+            },
+            // --- DELICIAS ---
             {
                 id: 12,
                 category: 'delicias',
                 title: "Brownies: Fragmentos de Noche",
                 yield: "9 porciones",
                 time: "45 min",
-                ingredients: ["100 g de chocolate semi amargo", "170 g de mantequilla de vaca (o margarina complementada)", "100 g de azúcar blanca (si usas chocolate normal: reducir a 70g)", "100 g de azúcar morena (si usas chocolate normal: reducir a 70g)", "3 huevos grandes", "Esencia de vainilla al gusto", "90 g de harina blanca (o 100g si usas cocoa en lugar de cacao)", "40 g de cacao en polvo sin azúcar (o 30g de cocoa)", "5 ml (1 cdta) de café espresso o instantáneo"],
+                ingredients: ["100 g (2/3 taza) de chocolate semi amargo", "170 g (3/4 taza) de mantequilla de vaca (o margarina complementada)", "100 g (1/2 taza) de azúcar blanca (si usas chocolate normal: reducir a 70g)", "100 g (1/2 taza) de azúcar morena (si usas chocolate normal: reducir a 70g)", "3 huevos grandes", "Esencia de vainilla al gusto", "90 g (3/4 taza) de harina blanca (o 100g si usas cocoa en lugar de cacao)", "40 g (1/2 taza) de cacao en polvo sin azúcar (o 30g de cocoa)", "5 ml (1 cdta) de café espresso o instantáneo"],
                 cookingTable: [
                     { point: "Fudgy", desc: "Chocolate intenso, húmedo, casi crudo.", temp: "175–180 °C", time: "22–25 min" },
                     { point: "Chewy", desc: "Firme pero flexible, bordes chiclosos.", temp: "175–180 °C", time: "25–28 min" },
                     { point: "Cakey", desc: "Esponjoso, textura tipo torta.", temp: "175–180 °C", time: "28–32 min" }
                 ],
-                instructions: ["1. El Oro Avellana: Calentar la mantequilla hasta que tome un color dorado y desprenda olor a nuez (noisette). Si usas margarina, mezcla con un poco de leche en polvo para imitar el efecto.", "2. La Fusión Oscura: Agregar el chocolate picado a la mantequilla caliente y derretir lentamente fuera del fuego. Añadir el café y dejar templar.", "3. El Baño de Calor: En un bol, calentar levemente los huevos con ambos azúcares (baño maría suave o microondas) para ayudar a disolver los cristales. No batir en exceso para no incorporar aire.", "4. La Unión de Fuerzas: Mezclar la harina con el cacao (o cocoa) en un recipiente aparte.", "5. El Pacto Final: Incorporar la mezcla de chocolate y mantequilla a los huevos con azúcar. Después, integrar los secos tamizados con movimientos suaves (no mezclar mucho para evitar aire).", "6. El Lecho Profundo: Verter en un molde preparado, llenando unos 4-5 cm de altura. Esparcir parejo.", "7. La Prueba de Fuego: Hornear según el punto deseado (consultar la Tabla de Cocción abajo).", "8. La Ofrenda: A mitad de cocción, agregar toppings como sal rosada, pistachos o nueces.", "9. La Paciencia: Esperar 20-30 minutos antes de cortar para que la estructura se asiente."],
-                note: "El secreto está en la temperatura de la mantequilla y en no sobrebatir la mezcla final."
+                instructions: [
+                    "1. El Oro Avellana: Calentar la mantequilla hasta que tome un color dorado y desprenda olor a nuez (noisette). Si usas margarina, mezcla con un poco de leche en polvo para imitar el efecto.",
+                    "2. La Fusión Oscura: Agregar el chocolate picado a la mantequilla caliente y derretir lentamente fuera del fuego. Añadir el café y dejar templar.",
+                    "3. El Baño de Calor: En un bol, calentar levemente los huevos con ambos azúcares (baño maría suave o microondas) para ayudar a disolver los cristales. No batir en exceso para no incorporar aire<sup>1</sup>.",
+                    "4. La Unión de Fuerzas: Mezclar la harina con el cacao (o cocoa) en un recipiente aparte.",
+                    "5. El Pacto Final: Incorporar la mezcla de chocolate y mantequilla a los huevos con azúcar. Después, integrar los secos tamizados con movimientos suaves (no mezclar mucho para evitar aire).",
+                    "6. El Lecho Profundo: Verter en un molde preparado, llenando unos 4-5 cm de altura. Esparcir parejo.",
+                    "7. La Prueba de Fuego: Hornear según el punto deseado (consultar la Tabla de Cocción abajo).",
+                    "8. La Ofrenda: A mitad de cocción, agregar toppings como sal rosada, pistachos o nueces.",
+                    "9. La Paciencia: Esperar 20-30 minutos antes de cortar para que la estructura se asiente<sup>2</sup>."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Si bates demasiado, incorporarás aire y obtendrás un bizcocho (cakey) en lugar de un brownie denso." },
+                    { symbol: "2", text: "Cortar en caliente destruirá la estructura. La espera es parte del ritual." },
+                    { symbol: "❝", text: "El secreto está en la temperatura de la mantequilla y en no sobrebatir la mezcla final." }
+                ]
             },
             {
                 id: 14,
@@ -195,14 +363,24 @@
                 yield: "8 porciones",
                 time: "30 min + 4 h frío",
                 ingredients: ["500 ml (2 tazas) de crema de leche (fría)", "4 claras de huevo", "100 g (1/2 taza) de azúcar blanca", "2 tazas de pulpa de maracuyá (para la mezcla)", "21 g (3 sobres) de gelatina sin sabor", "120 ml (1/2 taza) de agua fría (para hidratar)", "Cacao en polvo o almíbar de maracuyá (para decorar)"],
-                instructions: ["1. La Nube Fría: Batir la crema de leche fría hasta obtener un punto Chantilly (picos suaves). No batir en exceso para evitar que se corte. Reservar en frío.", "2. El Suspiro Etéreo: Batir las claras a punto de nieve. Incorporar el azúcar en forma de lluvia poco a poco hasta obtener un merengue firme y brillante.", "3. El Corazón de la Fruta: Hidratar la gelatina en agua fría y fundir en microondas (30 seg). Mezclar las 2 tazas de pulpa de maracuyá con la gelatina líquida.", "4. La Unión: Verter la mezcla de fruta sobre el merengue batiendo suavemente. Luego, incorporar la crema batida con movimientos envolventes para no perder aire.", "5. El Reposo: Verter en moldes y refrigerar hasta cuajar (mínimo 4 horas).", "6. El Toque Final: Decorar la superficie con una lluvia de cacao en polvo o hilos de almíbar de maracuyá antes de servir."],
-                note: "Esta receta es una base maestra. Puedes sustituir el maracuyá por otras frutas ácidas. Mantener siempre en frío."
+                instructions: [
+                    "1. La Nube Fría: Batir la crema de leche fría hasta obtener un punto Chantilly (picos suaves). No batir en exceso para evitar que se corte. Reservar en frío.",
+                    "2. El Suspiro Etéreo: Batir las claras a punto de nieve. Incorporar el azúcar en forma de lluvia poco a poco hasta obtener un merengue firme y brillante.",
+                    "3. El Corazón de la Fruta: Hidratar la gelatina en agua fría y fundir en microondas (30 seg). Mezclar las 2 tazas de pulpa de maracuyá con la gelatina líquida<sup>1</sup>.",
+                    "4. La Unión: Verter la mezcla de fruta sobre el merengue batiendo suavemente. Luego, incorporar la crema batida con movimientos envolventes para no perder aire.",
+                    "5. El Reposo: Verter en moldes y refrigerar hasta cuajar (mínimo 4 horas).",
+                    "6. El Toque Final: Decorar la superficie con una lluvia de cacao en polvo o hilos de almíbar de maracuyá antes de servir."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Asegúrate de que la gelatina esté tibia, no caliente, para no cocinar la fruta ni bajar el merengue." },
+                    { symbol: "❝", text: "Esta receta es una base maestra. Puedes sustituir el maracuyá por otras frutas ácidas. Mantener siempre en frío." }
+                ]
             },
             {
                 id: 15,
                 category: 'delicias',
                 title: "Pudin de Chocolate: El Lodo Celestial",
-                yield: "4-6 porciones",
+                yield: "6 porciones",
                 time: "40 min + 4 h frío",
                 ingredients: [
                     "200 g (2 tazas) de avena en hojuelas cruda",
@@ -223,19 +401,22 @@
                 instructions: [
                     "1. La Infusión Grasa: Dorar la mantequilla con las especias hasta que huela a nuez (Beurre Noisette). Verter las 5 tazas de agua, hervir 1 minuto y apagar.",
                     "2. La Leche de Tierra: Retirar las ramas de canela y licuar el agua infusionada con la avena cruda hasta obtener una mezcla blanca.",
-                    "3. El Filtrado: Cernir la mezcla para separar el líquido del bagazo. Regresar una cucharada de este bagazo al líquido (para textura).",
+                    "3. El Filtrado: Cernir la mezcla para separar el líquido del bagazo. Regresar una cucharada de este bagazo al líquido (para textura)<sup>1</sup>.",
                     "4. La Sombra: Incorporar los azúcares, la cocoa, el café espresso y la sal al líquido de avena.",
                     "5. El Espesamiento: Cocinar a fuego medio-bajo removiendo constantemente hasta que la mezcla espese y cubra el reverso de la cuchara.",
                     "6. El Frío: Añadir vainilla, verter en moldes y refrigerar hasta que cuaje por completo.",
                     "7. La Coronación: Decorar la superficie con frutos rojos, nueces o el topping elegido para contrastar texturas."
                 ],
-                note: "Un postre humilde que se transforma en manjar. La avena aporta una cremosidad ancestral sin necesidad de lácteos."
+                footnotes: [
+                    { symbol: "1", text: "No presiones el bagazo en exceso contra el colador, o liberarás almidones que volverán el pudin gomoso." },
+                    { symbol: "❝", text: "Un postre humilde que se transforma en manjar. La avena aporta una cremosidad ancestral sin necesidad de lácteos." }
+                ]
             },
             {
                 id: 16,
                 category: 'delicias',
                 title: "Cheesecake Noir & Or: Pasión y Sombra",
-                yield: "8-10 porciones",
+                yield: "10 porciones",
                 time: "1 h 30 min + 7 h reposo",
                 ingredients: [
                     "--- EL JARABE ÁUREO ---",
@@ -256,44 +437,115 @@
                 instructions: [
                     "1. El Néctar Dorado: En una olla, cocinar la pulpa y el azúcar del jarabe a fuego medio hasta reducir a consistencia de miel. Enfriar totalmente.",
                     "2. El Cimiento Negro: Triturar las galletas a polvo fino. Mezclar con mantequilla derretida hasta parecer arena húmeda. Compactar en el fondo de un molde fijo de 22cm. Hornear 10 min a 170°C y enfriar.",
-                    "3. La Crema Alquímica: Batir el queso crema con el azúcar hasta que no haya grumos (sin aire). Añadir huevos uno a uno, luego yogur, crema y vainilla. Al final, tamizar la harina e integrar suavemente.",
+                    "3. La Crema Alquímica: Batir el queso crema con el azúcar hasta que no haya grumos (sin aire). Añadir huevos uno a uno, luego yogur, crema y vainilla. Al final, tamizar la harina e integrar suavemente<sup>1</sup>.",
                     "4. La Fusión de Sabor: Separar 3 cucharadas grandes del jarabe de maracuyá frío y mezclarlas dentro de la crema de queso.",
                     "5. El Arte del Caos: Verter el relleno sobre la base. Dejar caer gotas del resto del jarabe sobre la superficie. Con un palillo, dibujar espirales para marmolar.",
                     "6. El Fuego Lento: Bajar horno a 150°C. Colocar una taza de agua en una esquina del horno (humedad). Hornear 55-65 min. El centro debe temblar ligeramente.",
-                    "7. El Sueño Frío: Apagar horno, abrir un poco la puerta y dejar enfriar dentro 1 hora. Luego refrigerar mínimo 6 horas."
+                    "7. El Sueño Frío: Apagar horno, abrir un poco la puerta y dejar enfriar dentro 1 hora. Luego refrigerar mínimo 6 horas<sup>2</sup>."
                 ],
-                note: "La harina ayuda a estabilizar la mezcla y evitar grietas sin alterar el sabor. El enfriado lento dentro del horno apagado es el verdadero secreto para una textura sedosa."
+                footnotes: [
+                    { symbol: "1", text: "Usa velocidad baja o bate a mano. Si incorporas mucho aire, el cheesecake se inflará y luego se agrietará." },
+                    { symbol: "2", text: "El enfriado brusco es lo que causa grietas. Déjalo descansar en el calor residual del horno apagado." },
+                    { symbol: "❝", text: "La harina ayuda a estabilizar la mezcla y evitar grietas sin alterar el sabor. El enfriado lento dentro del horno apagado es el verdadero secreto para una textura sedosa." }
+                ]
+            },
+            {
+                id: 17,
+                category: 'delicias',
+                title: "Crumbl Cookies: Plegarias a la Diosa",
+                yield: "12 unidades",
+                time: "1 h 30 min",
+                ingredients: [
+                    "360 g (4 tazas) de avena en hojuelas",
+                    "15 g (1 cda) de polvo para hornear",
+                    "4 huevos grandes",
+                    "12 dátiles sin hueso (picados)",
+                    "125 g (1/2 taza) de mantequilla con sal (pomada)",
+                    "50 g (1/3 taza) de arándanos deshidratados",
+                    "50 g (1/3 taza) de nibs de cacao"
+                ],
+                instructions: [
+                    "1. La Molienda: Licuar las hojuelas de avena con el polvo de hornear hasta obtener un polvo fino. Reservar.",
+                    "2. La Emulsión Vital: En la misma licuadora, procesar los huevos con los dátiles hasta lograr una emulsión espumosa y homogénea.",
+                    "3. La Amalgama: Verter la mezcla líquida sobre la harina de avena e integrar. Añadir la mantequilla y amasar hasta obtener una masa uniforme.",
+                    "4. Los Tesoros: Incorporar los arándanos y los nibs de cacao, distribuyéndolos equitativamente por toda la masa.",
+                    "5. El Letargo: Llevar la masa al congelador por 30 minutos para reafirmar la grasa y la estructura<sup>1</sup>.",
+                    "6. El Sacrificio: Formar bolas con cuchara de helado sobre bandeja engrasada. Hornear a 160°C por 25 minutos.",
+                    "7. El Aliento Final: Apagar el horno, abrir ligeramente la puerta y dejar enfriar las galletas dentro para lograr la textura perfecta."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "El frío es esencial; si la masa está tibia, las galletas se esparcirán demasiado en el horno." },
+                    { symbol: "❝", text: "El enfriado lento es el secreto para un centro suave y un exterior firme." }
+                ]
+            },
+            {
+                id: 18,
+                category: 'delicias',
+                title: "Tartaleta de Fresa: El Jardín de Nuez",
+                yield: "10 porciones",
+                time: "2 h + 2 h reposo",
+                ingredients: ["--- MASA SABLÉE NOISETTE ---", "250 g (2 tazas) de harina de trigo todo uso", "150 g (2/3 taza) de mantequilla sin sal", "100 g (3/4 taza) de azúcar glas", "1 huevo grande", "1 pizca de sal", "--- CREMA DE CANELA ---", "500 ml (2 tazas) de leche entera", "2 ramas de canela entera", "5 ml (1 cdta) de esencia de vainilla", "4 yemas de huevo", "100 g (1/2 taza) de azúcar blanca", "40 g (1/3 taza) de fécula de maíz (maicena)", "--- MONTAJE ---", "500 g (aprox. 20) fresas frescas y firmes"],
+                instructions: [
+                    "1. El Oro Avellana: Cocinar la mantequilla a fuego medio hasta que los sólidos lácteos se doren y desprenda aroma a nuez tostada (Beurre Noisette). Retirar y enfriar hasta solidificar a punto pomada.",
+                    "2. La Arena Dulce: Mezclar harina, azúcar glas y sal. Incorporar la mantequilla noisette suave frotando con los dedos hasta obtener una textura arenosa.",
+                    "3. El Vínculo: Añadir el huevo e integrar rápidamente sin amasar en exceso (para no activar el gluten). Envolver en plástico y refrigerar 1 hora<sup>1</sup>.",
+                    "4. El Lecho Dorado: Estirar la masa fría y forrar un molde de tarta. Pinchar el fondo y hornear a 180°C durante 15-20 minutos hasta dorar. Enfriar.",
+                    "5. La Infusión Especiada: Calentar la leche con la canela y vainilla hasta hervir. Apagar, tapar y dejar infusionar 10 minutos.",
+                    "6. La Base Pálida: Batir las yemas con el azúcar y la maicena en un bol aparte hasta que la mezcla aclare su color.",
+                    "7. La Transformación: Retirar la canela de la leche. Verter un poco de leche caliente sobre las yemas batiendo rápido (templado). Regresar todo a la olla y cocinar a fuego medio removiendo hasta espesar y hervir 1 minuto.",
+                    "8. El Refinamiento: Colar la crema caliente para eliminar grumos. Cubrir con film a piel (tocando la superficie) y enfriar completamente.",
+                    "9. El Jardín Rojo: Rellenar la base crujiente con la crema de canela fría y alisar. Coronar con las fresas frescas cortadas artísticamente."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Si amasas demasiado, la base quedará dura en lugar de quebradiza." },
+                    { symbol: "❝", text: "El secreto reside en la mantequilla noisette, que aporta un sabor profundo a frutos secos que contrasta con la frescura de la fruta." }
+                ]
             },
             {
                 id: 4,
                 category: 'delicias',
                 title: "Biscotelas: Dedos de Hueso",
-                yield: "24 piezas",
+                yield: "24 unidades",
                 time: "30 min",
-                ingredients: ["5 claras de huevo (aprox. 160 g)", "5 yemas de huevo (aprox. 90 g)", "180 g (1 1/2 tazas) de harina de trigo", "170 g (3/4 taza) de azúcar blanca", "5 ml (1 cdta) de esencia de vainilla", "100 g (1/2 taza) de azúcar blanca (para cubrir)"],
-                instructions: ["1. Nubes de Azúcar: Batir claras a punto de nieve agregando azúcar en forma de lluvia hasta obtener picos firmes y brillantes.", "2. El Oro Líquido: Batir ligeramente las yemas con la vainilla en otro recipiente.", "3. El Abrazo Etéreo: Verter yemas sobre el merengue e integrar con movimientos envolventes muy suaves.", "4. La Lluvia de Trigo: Tamizar la harina sobre la mezcla en dos partes. Integrar envolviendo con cuidado para no bajar el aire.", "5. Los Bastones de Hueso: Usar manga pastelera con boquilla redonda. Formar bastones de 8-10 cm sobre papel de horno.", "6. El Velo Cristalino: Espolvorear generosamente con azúcar blanca antes de hornear.", "7. El Fuego Suave: Cocinar a 180°C por 15 minutos hasta dorar levemente."],
-                note: "La clave es la suavidad al mezclar la harina para mantener la esponjosidad."
-            },
-            {
-                id: 5,
-                category: 'delicias',
-                title: "Tiramisú: Estratos del Olvido",
-                yield: "4 porciones",
-                time: "20 min + 3 h frío",
-                ingredients: ["180 g (3/4 taza) de yogur natural o griego", "120 ml (1/2 taza) de crema de leche fría", "15 Biscotelas caseras (aprox. 100 g)", "80 ml (1/3 taza) de café espresso fuerte", "40 g (3 cdas) de azúcar o miel", "5 ml (1 cdta) de esencia de vainilla", "15 g (2 cdas) de cacao en polvo"],
-                instructions: ["1. El Batido Blanco: Batir crema de leche fría con azúcar hasta medio punto (cuerpo suave).", "2. La Fusión Griega: Incorporar el yogur y vainilla a la crema con movimientos suaves.", "3. La Esencia Negra: Disponer el espresso frío en un plato hondo.", "4. El Bautismo: Mojar rápidamente las biscotelas en café (vuelta y vuelta) y colocar base en vasos.", "5. La Construcción: Cubrir con crema. Repetir alternando galleta y crema hasta llenar.", "6. El Sueño Frío: Refrigerar tapado mínimo 3 horas.", "7. El Polvo de Noche: Espolvorear cacao en polvo justo antes de servir."],
-                note: "Versión más ligera y fresca. El reposo es vital para la textura."
+                ingredients: ["160 g (5 unidades) de claras de huevo", "90 g (5 unidades) de yemas de huevo", "180 g (1 1/2 tazas) de harina de trigo", "170 g (3/4 taza) de azúcar blanca", "5 ml (1 cdta) de esencia de vainilla", "100 g (1/2 taza) de azúcar blanca (para cubrir)"],
+                instructions: [
+                    "1. Nubes de Azúcar: Batir claras a punto de nieve agregando azúcar en forma de lluvia hasta obtener picos firmes y brillantes<sup>1</sup>.",
+                    "2. El Oro Líquido: Batir ligeramente las yemas con la vainilla en otro recipiente.",
+                    "3. El Abrazo Etéreo: Verter yemas sobre el merengue e integrar con movimientos envolventes muy suaves.",
+                    "4. La Lluvia de Trigo: Tamizar la harina sobre la mezcla en dos partes. Integrar envolviendo con cuidado para no bajar el aire<sup>2</sup>.",
+                    "5. Los Bastones de Hueso: Usar manga pastelera con boquilla redonda. Formar bastones de 8-10 cm sobre papel de horno.",
+                    "6. El Velo Cristalino: Espolvorear generosamente con azúcar blanca antes de hornear.",
+                    "7. El Fuego Suave: Cocinar a 180°C por 15 minutos hasta dorar levemente."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "El pico debe ser firme: si volteas el bol, las claras no deben caer." },
+                    { symbol: "2", text: "Usa una espátula de goma y haz movimientos circulares de abajo hacia arriba." },
+                    { symbol: "❝", text: "La clave es la suavidad al mezclar la harina para mantener la esponjosidad." }
+                ]
             },
             {
                 id: 8,
                 category: 'delicias',
                 title: "Turrón de Almendra: Losa Ancestral",
-                yield: "1 tableta",
+                yield: "10 porciones",
                 time: "40 min + 12 h reposo",
                 isUntested: true,
                 ingredients: ["200 g (1 1/2 tazas) de almendras crudas", "120 g (1/3 taza) de miel de abeja", "60 g (1/4 taza) de azúcar blanca", "1 clara de huevo (aprox. 30 g)", "2 hojas de oblea o papel de arroz"],
-                instructions: ["1. El Tostado Sagrado: Escaldar y pelar almendras si es necesario. Tostar en horno a 170°C por 15 min hasta dorar el interior.", "2. El Oro Hirviente: Calentar miel y azúcar a fuego medio-bajo hasta 135°C (punto de bola dura).", "3. La Espuma Blanca: Batir la clara a punto de nieve firme mientras se hace el almíbar.", "4. El Hilo de Vida: Verter el almíbar en hilo sobre la clara batiendo constantemente (mezcla brillante).", "5. La Deshidratación: Cocinar la mezcla a fuego MUY bajo removiendo hasta que espese mucho y se despegue.", "6. La Unión Pétrea: Añadir almendras tostadas y mezclar con fuerza.", "7. El Prensado: Verter sobre una oblea en molde, cubrir con la otra oblea y colocar peso encima.", "8. La Petrificación: Dejar enfriar 12 horas antes de cortar."],
-                note: "El secado al fuego es crucial para la textura dura y crujiente."
+                instructions: [
+                    "1. El Tostado Sagrado: Escaldar y pelar almendras si es necesario. Tostar en horno a 170°C por 15 min hasta dorar el interior.",
+                    "2. El Oro Hirviente: Calentar miel y azúcar a fuego medio-bajo hasta 135°C (punto de bola dura)<sup>1</sup>.",
+                    "3. La Espuma Blanca: Batir la clara a punto de nieve firme mientras se hace el almíbar.",
+                    "4. El Hilo de Vida: Verter el almíbar en hilo sobre la clara batiendo constantemente (mezcla brillante).",
+                    "5. La Deshidratación: Cocinar la mezcla a fuego MUY bajo removiendo hasta que espese mucho y se despegue<sup>2</sup>.",
+                    "6. La Unión Pétrea: Añadir almendras tostadas y mezclar con fuerza.",
+                    "7. El Prensado: Verter sobre una oblea en molde, cubrir con la otra oblea y colocar peso encima.",
+                    "8. La Petrificación: Dejar enfriar 12 horas antes de cortar."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Si no tienes termómetro, una gota en agua fría debe formar una bola dura y quebradiza al instante." },
+                    { symbol: "2", text: "Este paso seca el merengue; sin él, el turrón quedará chicloso en lugar de duro." },
+                    { symbol: "❝", text: "El secado al fuego es crucial para la textura dura y crujiente." }
+                ]
             },
             {
                 id: 9,
@@ -302,28 +554,131 @@
                 yield: "3 porciones",
                 time: "25 min",
                 ingredients: ["200 g (2 tazas) de pasta corta (macarrones)", "50 g (3.5 cdas) de mantequilla", "50 g (1/3 taza) de harina de trigo", "500 ml (2 tazas) de leche entera", "200 g (2 tazas) de queso Cheddar rallado", "Sal y pimienta negra al gusto", "Ajo en polvo y paprika al gusto"],
-                instructions: ["1. El Hervor Inicial: Cocer macarrones en agua con sal hasta punto al dente. Escurrir.", "2. La Base Dorada: Derretir mantequilla en olla y cocinar la harina 2 minutos.", "3. La Salsa Madre: Añadir leche poco a poco batiendo constantemente. Cocinar hasta espesar.", "4. El Despertar de Sabores: Condimentar con sal, pimienta, ajo y paprika.", "5. La Fundición: Apagar fuego, añadir queso y remover hasta fundir en una salsa lisa.", "6. La Unión Final: Integrar la pasta cocida con la salsa."],
-                note: "Gratinar con extra queso al horno para un acabado superior."
+                instructions: [
+                    "1. El Hervor Inicial: Cocer macarrones en agua con sal hasta punto al dente. Escurrir.",
+                    "2. La Base Dorada: Derretir mantequilla en olla y cocinar la harina 2 minutos<sup>1</sup>.",
+                    "3. La Salsa Madre: Añadir leche poco a poco batiendo constantemente. Cocinar hasta espesar.",
+                    "4. El Despertar de Sabores: Condimentar con sal, pimienta, ajo y paprika.",
+                    "5. La Fundición: Apagar fuego, añadir queso y remover hasta fundir en una salsa lisa.",
+                    "6. La Unión Final: Integrar la pasta cocida con la salsa."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Cocinar la harina elimina el sabor a crudo; debe oler ligeramente a nuez tostada (Roux Rubio)." },
+                    { symbol: "❝", text: "Gratinar con extra queso al horno para un acabado superior." }
+                ]
             },
             {
                 id: 13,
                 category: 'sustento',
                 title: "Tenders de Pollo: Garras de Fuego",
-                yield: "2-3 porciones",
+                yield: "3 porciones",
                 time: "1 h 30 min",
                 ingredients: ["--- POLLO ---", "500 g (2 unidades) de pechugas de pollo", "250 ml (1 taza) de caldo de pollo o vegetales (frío)", "5 g (1 cdta) de ajo en polvo", "5 g (1 cdta) de tomillo seco", "--- EMPANIZADO ---", "120 g (1 taza) de harina de trigo", "5 g (1 cdta) de semillas de mostaza (trituradas)", "2 huevos grandes", "3 g (1/2 cdta) de jengibre en polvo", "150 g (3 tazas) de cereal de maíz sin azúcar (opciones: nachos triturados o panko)", "Sal y pimienta negra al gusto", "--- SALSA MIEL PICANTE ---", "50 g (3.5 cdas) de mantequilla", "85 g (1/3 taza) de miel de abeja", "5 g (1-2 cdtas) de hojuelas de chile o ají en polvo", "15 ml (1 cda) de salsa de soya"],
-                instructions: ["1. La Marca: Pinchar la pechuga repetidamente con un tenedor para abrir caminos al sabor. Cortar en tiras largas y gruesas.", "2. El Baño de Esencias: Sumergir las tiras en el caldo mezclado con ajo y tomillo. Reposar en frío mínimo 1 hora (el alma del sabor).", "3. La Primera Capa: Mezclar la harina con sal, pimienta y semillas de mostaza. Cubrir el pollo escurrido con este polvo.", "4. El Nexo: Batir los huevos con el jengibre. Pasar las piezas enharinadas por esta mezcla.", "5. La Armadura: Cubrir con el cereal aplastado (o nachos/panko) presionando para que se adhiera.", "6. El Juicio: Freír en aceite caliente hasta dorar o usar Freidora de Aire a 180°C por 15 minutos (rociar aceite antes).", "7. El Néctar Ardiente: Fundir mantequilla en sartén. Añadir miel, chile y soya. Calentar a fuego medio hasta integrar y retirar.", "8. El Baño Final: Bañar los tenders crujientes con la salsa caliente antes de servir."],
-                note: "El cereal aporta un crujido dulce, los nachos un toque salado y el panko una textura aireada. Elige tu arma."
+                instructions: [
+                    "1. La Marca: Pinchar la pechuga repetidamente con un tenedor para abrir caminos al sabor. Cortar en tiras largas y gruesas.",
+                    "2. El Baño de Esencias: Sumergir las tiras en el caldo mezclado con ajo y tomillo. Reposar en frío mínimo 1 hora (el alma del sabor)<sup>1</sup>.",
+                    "3. La Primera Capa: Mezclar la harina con sal, pimienta y semillas de mostaza. Cubrir el pollo escurrido con este polvo.",
+                    "4. El Nexo: Batir los huevos con el jengibre. Pasar las piezas enharinadas por esta mezcla.",
+                    "5. La Armadura: Cubrir con el cereal aplastado (o nachos/panko) presionando para que se adhiera.",
+                    "6. El Juicio: Freír en aceite caliente hasta dorar o usar Freidora de Aire a 180°C por 15 minutos (rociar aceite antes)<sup>2</sup>.",
+                    "7. El Néctar Ardiente: Fundir mantequilla en sartén. Añadir miel, chile y soya. Calentar a fuego medio hasta integrar y retirar.",
+                    "8. El Baño Final: Bañar los tenders crujientes con la salsa caliente antes de servir."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Esta salmuera rápida hidrata las fibras musculares para que no se sequen al freír." },
+                    { symbol: "2", text: "El aceite debe estar bien caliente (180°C) para sellar el rebozado inmediatamente y que no absorba grasa." },
+                    { symbol: "❝", text: "El cereal aporta un crujido dulce, los nachos un toque salado y el panko una textura aireada. Elige tu arma." }
+                ]
+            },
+            {
+                id: 18,
+                category: 'sustento',
+                title: "Enchiladas: El Bosque Ahumado",
+                yield: "4 porciones",
+                time: "1 h 45 min",
+                ingredients: [
+                    "--- POLLO Y CALDO BASE ---",
+                    "500 g (1 unidad) de pechuga de pollo grande",
+                    "1.2 L (5 tazas) de agua",
+                    "10 g (1 cubo) de caldo de pollo",
+                    "2 hojas de laurel",
+                    "5 g (1 1/2 cdta) de ajo en polvo",
+                    "Pimienta negra al gusto",
+                    "--- SALSA TATEMADA ---",
+                    "500 g (4 unidades) de tomates rojos medianos",
+                    "150 g (1 unidad) de pimiento rojo y 150 g (1 unidad) de pimiento verde",
+                    "150 g (1 unidad) de cebolla perla",
+                    "10 g (2 dientes) de ajo",
+                    "15 g (2 unidades) de chiles secos (Guajillo o Ancho) hidratados",
+                    "2 granos de cacao puro tostados",
+                    "120 ml (1/2 taza) de crema de leche",
+                    "Para infusión: 30 ml (2 cdas) aceite, 1 raja canela, 2 clavos olor",
+                    "--- TORTILLAS ARTESANALES ---",
+                    "300 g (2 tazas) de harina de maíz precocida",
+                    "600 ml (2 1/2 tazas) del caldo de pollo reservado (caliente)",
+                    "50 g (1 taza) de espinacas frescas",
+                    "15 g (1 cda) de mantequilla o manteca",
+                    "--- ACABADO ---",
+                    "200 g (2 tazas) de queso para gratinar (Mozzarella/Gouda)"
+                ],
+                instructions: [
+                    "1. El Sacrificio: Cocinar la pechuga en agua hirviendo con el cubo de caldo, laurel, ajo y pimienta hasta que la carne se rinda. Desgarrar la carne en hebras finas. Colar la esencia vital (caldo) y dividir en dos partes iguales.",
+                    "2. El Fuego Negro: Exponer los tomates, pimientos, cebolla y ajos al fuego directo hasta que su piel ennegrezca. Retirar la piel quemada para revelar su corazón tierno<sup>1</sup>.",
+                    "3. La Seda Líquida: Procesar en triturador de cuchillas los vegetales asados, chiles hidratados, cacao, crema y la primera mitad del caldo hasta obtener una salsa fina.",
+                    "4. La Infusión Aromática: Calentar aceite con canela y clavos hasta que el aire se llene de especias. Verter la salsa con cuidado y cocinar a fuego lento 15 minutos. Retirar los elementos sólidos.",
+                    "5. La Alquimia Verde: Procesar las espinacas con la segunda mitad del caldo caliente. Unir este líquido esmeralda con la harina de maíz y la mantequilla, amasando hasta obtener una masa suave<sup>2</sup>.",
+                    "6. El Disco de Maíz: Formar discos finos de masa y someterlos al calor de una plancha de hierro candente hasta que estén cocidos y flexibles.",
+                    "7. El Ritual de Unión: Sumergir cada disco en la salsa caliente, rellenar con la carne y enrollar en una fuente. Bañar con el resto de la salsa y cubrir con un manto de queso.",
+                    "8. El Fuego Sagrado: Llevar al horno a 200°C hasta que el queso se funda y dore como el sol del atardecer."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "No temas carbonizar la piel; ese 'tatemado' es lo que da el sabor ahumado característico." },
+                    { symbol: "2", text: "El caldo debe estar caliente para hidratar correctamente la harina de maíz pre-cocida." },
+                    { symbol: "❝", text: "El cacao y la canela aportan una profundidad de sabor que eleva este plato a un ritual sagrado." }
+                ]
+            },
+            {
+                id: 20,
+                category: 'conservas',
+                title: "Pepinillos: Esmeraldas en Salmuera",
+                yield: "1000 g (2 frascos)",
+                time: "1 h 30 min + 3 días reposo",
+                ingredients: ["--- BASE ---", "1000 g (10 unidades) de pepinillos frescos pequeños", "45 g (3 cdas) de sal en grano", "--- LÍQUIDO (SALMUERA) ---", "750 ml (3 tazas) de vinagre blanco", "250 ml (1 taza) de agua", "300 g (1 1/2 tazas) de azúcar blanca", "300 g (1 1/2 tazas) de azúcar morena", "--- ESPECIAS Y AROMAS ---", "15 g (1 cda) de cúrcuma en polvo", "15 g (1 cda) de cilantro (seco o semilla)", "30 g (2 cdas) de mostaza preparada", "Semillas de mostaza enteras (al gusto)", "20 g (4 dientes) de ajo en láminas", "4 bayas de pimienta dulce (Jamaica)", "2 hojas de laurel secas", "Eneldo fresco (al gusto)"],
+                instructions: [
+                    "1. El Secreto de la Sal: Lavar y cortar pepinillos en rodajas. Mezclar con sal en colador y dejar drenar 1 hora. Enjuagar muy bien y secar<sup>1</sup>.",
+                    "2. El Despertar de las Especias: Tostar ligeramente la pimienta y semillas de mostaza en olla seca (30 seg) para liberar aceites.",
+                    "3. La Alquimia Ámbar: Añadir a la olla vinagre, agua, azúcares, cúrcuma, cilantro, mostaza preparada y laurel. Hervir hasta disolver el azúcar.",
+                    "4. El Lecho Aromático: En frascos esterilizados, colocar ajo y eneldo en el fondo.",
+                    "5. El Envasado: Llenar con las rodajas de pepinillo presionando suavemente.",
+                    "6. El Baño Hirviente: Verter la salmuera caliente hasta cubrir por completo.",
+                    "7. El Sellado: Cerrar y dejar enfriar antes de refrigerar.",
+                    "8. La Maceración: Esperar 3 días en frío para el sabor óptimo."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "Este paso deshidrata parcialmente el pepinillo, asegurando que se mantenga crujiente y no se ablande en el vinagre." },
+                    { symbol: "❝", text: "El laurel aporta taninos que mantienen la estructura crujiente. La cúrcuma da el color vibrante característico." }
+                ]
             },
             {
                 id: 6,
                 category: 'conservas',
                 title: "Mermelada: Corazón de la Fruta",
-                yield: "1 kg aprox.",
+                yield: "1000 g",
                 time: "1 h 30 min",
                 ingredients: ["750 g (3 tazas) de pulpa de fruta cocida", "375 g (1 3/4 tazas) de azúcar blanca", "375 g (1 3/4 tazas) de azúcar morena", "30 ml (2 cdas) de jugo de limón"],
-                instructions: ["1. La Pulpa Pura: Procesar la fruta hasta obtener 750g de pulpa limpia.", "2. El Caldero Dulce: Combinar pulpa, azúcares y limón en olla de fondo grueso.", "3. La Reducción: Cocinar a fuego medio-alto removiendo frecuentemente.", "4. La Purificación: Retirar espuma superficial con espumadera.", "5. El Punto Gel: Cocinar hasta 104°C (o prueba del plato frío: la gota no se escurre).", "6. El Encierro: Verter caliente en frascos esterilizados y sellar al vacío."],
-                note: "Refrigerar una vez abierto el frasco."
+                instructions: [
+                    "1. La Pulpa Pura: Procesar la fruta hasta obtener 750g de pulpa limpia.",
+                    "2. El Caldero Dulce: Combinar pulpa, azúcares y limón en olla de fondo grueso<sup>1</sup>.",
+                    "3. La Reducción: Cocinar a fuego medio-alto removiendo frecuentemente.",
+                    "4. La Purificación: Retirar espuma superficial con espumadera.",
+                    "5. El Punto Gel: Cocinar hasta 104°C (o prueba del plato frío: la gota no se escurre)<sup>2</sup>.",
+                    "6. El Encierro: Verter caliente en frascos esterilizados y sellar al vacío."
+                ],
+                footnotes: [
+                    { symbol: "1", text: "El limón activa la pectina natural de la fruta, necesaria para que la mermelada cuaje." },
+                    { symbol: "2", text: "Si no tienes termómetro, pon una gota en un plato helado; si se arruga al empujarla, está lista." },
+                    { symbol: "❝", text: "Refrigerar una vez abierto el frasco." }
+                ]
             }
         ];
 
@@ -338,34 +693,28 @@
             x: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>`,
             checkSquare: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
             square: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>`,
-            utensils: `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m7 2 12 12"/><path d="M7 2v20"/><path d="M21 6V4"/><path d="m21 2-6 6"/><path d="m3 22 18-18"/></svg>`, // UtensilsCrossed approx
-            sparkles: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>`
+            utensils: `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m7 2 12 12"/><path d="M7 2v20"/><path d="M21 6V4"/><path d="m21 2-6 6"/><path d="m3 22 18-18"/></svg>`,
+            sparkles: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>`,
+            feather: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>`
         };
 
+        // ASTAS VECTORIALES (Restauradas)
         const renderBranch = (positionClass) => `
-            <div class="absolute ${positionClass} pointer-events-none" style="width: 8rem; height: 8rem; z-index: 10;">
-                <svg viewBox="0 0 100 100" class="w-full h-full text-amber-900 opacity-80 md:opacity-90">
-                    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M5,5 C15,15 25,25 45,35 M5,5 C15,25 15,45 20,85" />
-                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M25,25 C35,20 50,15 75,20 M50,18 C55,10 65,5 80,5 M60,19 C65,25 75,30 90,25" />
-                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15,45 C20,55 35,65 30,90 M25,60 C35,65 50,70 60,85 M18,55 C10,60 5,75 2,90" />
-                    <circle cx="5" cy="5" r="2" fill="currentColor" />
-                </svg>
-            </div>
+            <svg viewBox="0 0 100 100" class="absolute w-16 h-16 md:w-32 md:h-32 text-amber-900 opacity-80 md:opacity-90 pointer-events-none ${positionClass}" style="z-index: 10;">
+                <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M5,5 C15,15 25,25 45,35 M5,5 C15,25 15,45 20,85" />
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M25,25 C35,20 50,15 75,20 M50,18 C55,10 65,5 80,5 M60,19 C65,25 75,30 90,25" />
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15,45 C20,55 35,65 30,90 M25,60 C35,65 50,70 60,85 M18,55 C10,60 5,75 2,90" />
+                <circle cx="5" cy="5" r="2" fill="currentColor" />
+            </svg>
         `;
-        
-        // Estilos específicos para cada esquina usando rotación de SVG
-        // corner-tl: Rotación 0 (default: root en 5,5 top-left)
-        // corner-tr: Rotación 90 (root pasa a top-right)
-        // corner-br: Rotación 180 (root pasa a bottom-right)
-        // corner-bl: Rotación 270 (root pasa a bottom-left)
+
         const cornerStyles = `
-            .corner-tl { top: 0; left: 0; transform: rotate(0deg); }
-            .corner-tr { top: 0; right: 0; transform: rotate(90deg); }
-            .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
-            .corner-bl { bottom: 0; left: 0; transform: rotate(270deg); }
+            .corner-br { bottom: 0; right: 0; transform: none; }
+            .corner-bl { bottom: 0; left: 0; transform: scaleX(-1); }
+            .corner-tr { top: 0; right: 0; transform: scaleY(-1); }
+            .corner-tl { top: 0; left: 0; transform: scale(-1); }
         `;
         
-        // Inyectar estilos
         const styleSheet = document.createElement("style");
         styleSheet.innerText = cornerStyles;
         document.head.appendChild(styleSheet);
@@ -406,15 +755,12 @@
 
         // --- ESTADO ---
         let appState = {
-            view: 'cover', // cover, list, details, add
+            view: 'cover',
             selectedRecipeId: null,
-            recipes: initialRecipes,
-            newRecipe: { title: '', yield: '', time: '', category: 'elixires', ingredients: '', instructions: '', note: '' }
+            recipes: initialRecipes
         };
 
         const mainContainer = document.getElementById('main-view');
-
-        // --- RENDERIZADORES ---
 
         function renderCover() {
             mainContainer.innerHTML = `
@@ -483,14 +829,12 @@
                     html += `
                         <div onclick="selectRecipe(${recipe.id})" class="group cursor-pointer p-4 border border-amber-900/10 hover:border-amber-900/50 rounded-sm transition-all bg-white/30 hover:bg-amber-100/30 shadow-sm relative overflow-hidden active:scale-[0.98] touch-manipulation">
                             ${isMasas ? `
-                            <!-- Marca de Agua para Masas Ancestrales -->
                             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
                                 <img src="https://raw.githubusercontent.com/PoisonedIsa/El-festin-del-hambre-eterna/3545e000681058ed1bcc2730edd609cf687314a9/visuales/ramas%20marca%20de%20agua.webp" 
                                      class="w-full h-full object-cover watermark-hover" 
                                      alt="Marca de agua" />
                             </div>
                             ` : `
-                            <!-- SVG Original para otras categorías -->
                             <div class="absolute -right-4 -bottom-4 opacity-0 group-hover:opacity-10 transition-opacity text-amber-900 z-0">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50,100 C60,60 80,40 100,20" /><path d="M60,60 C70,50 90,50 100,40" /></svg>
                             </div>
@@ -516,12 +860,6 @@
             });
 
             html += `
-                    </div>
-                    
-                    <div class="z-20 fixed bottom-6 left-0 right-0 flex justify-center pointer-events-none">
-                        <button onclick="navigate('add')" class="pointer-events-auto px-6 py-3 bg-[#fdfbf7] border-2 border-amber-900 text-amber-950 rounded-full shadow-xl hover:bg-amber-900 hover:text-white transition-all flex items-center gap-2 text-sm uppercase tracking-widest transform hover:scale-105 active:scale-95">
-                            ${svgs.plus} Nueva Receta
-                        </button>
                     </div>
                 </div>
             `;
@@ -598,7 +936,6 @@
                 if(isSectionHeader) {
                     html += `<li class="pt-2 font-bold text-amber-800 text-xs tracking-wider uppercase text-center flex items-center justify-center gap-2"><span class="h-px w-4 bg-amber-800/30"></span>${ing.replace(/---/g, '')}<span class="h-px w-4 bg-amber-800/30"></span></li>`;
                 } else {
-                    // Procesar paréntesis para cursiva
                     const formattedIng = ing.split('(').map((part, index) => index > 0 ? `<span class="italic text-xs opacity-80 block mt-0.5">(${part}</span>` : part).join('');
                     
                     html += `
@@ -623,9 +960,14 @@
             `;
 
             recipe.instructions.forEach((step, i) => {
-                const parts = step.split(':');
-                const title = parts[0];
-                const desc = parts.slice(1).join(':');
+                let title = '', desc = step;
+                
+                if (step.includes(':')) {
+                    const parts = step.split(':');
+                    title = parts[0];
+                    desc = parts.slice(1).join(':');
+                }
+
                 html += `
                     <div class="flex gap-3 group">
                         <p class="pt-0 text-justify"><span class="font-bold text-amber-900">${title}:</span>${desc}</p>
@@ -633,9 +975,32 @@
                 `;
             });
 
+            // Sección de Notas al Pie (Footnotes)
+            if (recipe.footnotes || recipe.note) {
+                html += `
+                    <div class="mt-8 pt-6 border-t border-amber-900/20">
+                        <h4 class="font-playfair font-bold text-amber-900 mb-4 flex items-center gap-2">
+                            <span class="w-4 h-4">${svgs.feather}</span> Notas del Alquimista
+                        </h4>
+                        <ul class="space-y-3 text-sm text-amber-900/80 italic">
+                `;
+                
+                // Nota General con símbolo
+                if (recipe.note) {
+                    html += `<li class="flex gap-2"><span class="font-bold text-amber-600 flex-shrink-0">❝</span><span>${recipe.note}</span></li>`;
+                }
+
+                // Notas Específicas
+                if (recipe.footnotes) {
+                    recipe.footnotes.forEach(fn => {
+                        html += `<li class="flex gap-2"><span class="font-bold text-amber-600 flex-shrink-0">${fn.symbol}</span><span>${fn.text}</span></li>`;
+                    });
+                }
+                
+                html += `</ul></div>`;
+            }
+
             html += `
-                                </div>
-                                ${recipe.note ? `<div class="mt-8 p-4 bg-amber-50 border border-amber-900/20 italic text-amber-900/80 font-serif text-sm relative rounded-sm"><span class="absolute -top-3 left-4 bg-[#fdfbf7] px-2 text-amber-900/40 text-2xl">❝</span><span class="font-bold not-italic text-xs uppercase tracking-wider block mb-1">Nota:</span>${recipe.note}</div>` : ''}
                             </div>
                         </div>
                     </div>
@@ -644,58 +1009,10 @@
             mainContainer.innerHTML = html;
         }
 
-        function renderAdd() {
-            mainContainer.innerHTML = `
-                <div class="h-full flex flex-col p-4 md:p-12 relative bg-[#fdfbf7] overflow-y-auto custom-scrollbar">
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
-                    <div class="z-10 w-full flex justify-between items-center mb-6 text-amber-900/60 sticky top-0 bg-[#fdfbf7] p-2 border-b border-amber-900/10">
-                        <button onclick="navigate('list')" class="hover:text-amber-900 flex items-center gap-1 text-sm font-bold">${svgs.x} Cancelar</button>
-                    </div>
-                    <div class="z-10 w-full max-w-2xl mx-auto pb-8">
-                        <h2 class="text-2xl md:text-3xl font-playfair text-amber-950 mb-6 text-center tracking-wide">Inscribir en el Grimorio</h2>
-                        <form id="add-recipe-form" class="space-y-6">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Nombre</label><input required name="title" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30 text-lg" placeholder="Ej. Estofado de Venado"></div>
-                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Categoría</label><select name="category" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors text-amber-950">${categories.map(c => `<option value="${c.id}">${c.title}</option>`).join('')}</select></div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Rendimiento</label><input required name="yield" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30" placeholder="Ej. 4 almas"></div>
-                                <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Tiempo</label><input required name="time" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30" placeholder="Ej. 2 h 30 min"></div>
-                            </div>
-                            <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Ingredientes (uno por línea)</label><textarea required name="ingredients" rows="5" class="w-full bg-white/50 border border-amber-900/10 focus:border-amber-900 p-3 outline-none transition-colors rounded-sm placeholder-amber-900/30" placeholder="200 g (1 taza) de bayas..."></textarea></div>
-                            <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Ritual (uno por línea)</label><textarea required name="instructions" rows="5" class="w-full bg-white/50 border border-amber-900/10 focus:border-amber-900 p-3 outline-none transition-colors rounded-sm placeholder-amber-900/30" placeholder="1. Hervir en caldero..."></textarea></div>
-                            <div><label class="block text-xs uppercase tracking-widest text-amber-900 mb-2">Nota</label><input name="note" class="w-full bg-white/50 border-b-2 border-amber-900/20 focus:border-amber-900 p-3 outline-none transition-colors placeholder-amber-900/30" placeholder="Advertencia..."></div>
-                            <button type="submit" class="w-full py-4 bg-amber-950 text-[#fdfbf7] text-xl rounded-sm shadow hover:bg-amber-900 transition-all flex items-center justify-center gap-2 border border-amber-900 active:scale-95">${svgs.save} Sellar en el Libro</button>
-                        </form>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('add-recipe-form').onsubmit = function(e) {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const newRec = {
-                    id: Date.now(),
-                    title: formData.get('title'),
-                    category: formData.get('category'),
-                    yield: formData.get('yield'),
-                    time: formData.get('time'),
-                    ingredients: formData.get('ingredients').split('\n').filter(l => l.trim() !== ''),
-                    instructions: formData.get('instructions').split('\n').filter(l => l.trim() !== ''),
-                    note: formData.get('note')
-                };
-                appState.recipes.push(newRec);
-                navigate('list');
-            };
-        }
-
-        // --- LÓGICA ---
-
         function navigate(view) {
             appState.view = view;
             if (view === 'cover') renderCover();
             else if (view === 'list') renderList();
-            else if (view === 'add') renderAdd();
         }
 
         function selectRecipe(id) {
@@ -705,7 +1022,6 @@
         }
 
         function exitRecipe() {
-            // Limpiar localStorage de la receta actual al salir
             if(appState.selectedRecipeId) {
                 localStorage.removeItem(`recipe_checks_${appState.selectedRecipeId}`);
             }
@@ -721,7 +1037,6 @@
             currentChecks[index] = newState;
             localStorage.setItem(key, JSON.stringify(currentChecks));
 
-            // Actualizar visualmente sin re-renderizar todo
             const iconBox = el.querySelector('.icon-box');
             const textContent = el.querySelector('.text-content');
             
@@ -740,9 +1055,7 @@
             }
         }
 
-        // --- INICIO ---
         renderCover();
-
     </script>
 </body>
 </html>
